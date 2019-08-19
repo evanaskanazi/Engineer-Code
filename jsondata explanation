@@ -1,0 +1,1 @@
+The principle behiond jsondata.py is taking note of the ability of python to read in json files of scraped data by identifying key headers and reading in classifications based on them.  Different sections of files can also be readin through data slicing.  In this manner any desired section of the json data can be readin and printed.
