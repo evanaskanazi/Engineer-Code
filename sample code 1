@@ -72,6 +72,7 @@ class filter_model:
 
 			self.model.add(Flatten(name='flatten'))
 			self.model.add(Dense (500, activation='relu'))
+			model.add(Dropout(0.5))
                         self.model.add(BatchRenormalization(axis=-1, beta_init=Constant(value=0.5)))
 
 	        self.model.add(Dense(1))
@@ -100,9 +101,9 @@ class filter_model:
 
 if __name__ == "__main__":
 	
-	f = h5py.File('./data.h5', 'r')
-	inputs = np.transpose(f['X']).reshape((613,50))
-	targets = np.transpose(f['Y']).reshape((613,1))
+	
+	inputs = np.random.random((200, 200, 200, 3))
+	targets = keras.utils.to_categorical(np.random.randint(10, size=(200, 1)), num_classes=4)
 
 	new_model = filter_model(epochs = 1000, batch_size = 10)
 	new_model.create_model()
