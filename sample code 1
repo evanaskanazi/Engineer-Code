@@ -1,0 +1,111 @@
+from sklearn.model selection import train_test_split
+from sklearn import preprocessing
+from sklearn.prepreocessing import Standars Scaler
+from sklearn.utils import class_weight
+import scipy.io as sio
+import numpy as np
+import argparse
+import os
+import h5py
+from progress.bar import Bar
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+
+import matplotlib.pyplot as plt
+import keras
+from keras import backend as K
+from keras import callbacks
+from keras import regularizers
+from keras.models import Sequential
+from keras.layers import Activation, BatchNormalization, Reshape
+#from keras.layers import "relu"
+from keras.optimizers import SGD
+from keras.optimizers import Adam
+from keras.layers import Dense
+from keras.losses import mean_absolute_error as mae
+from keras.losses import mean_squared_logarithmic_error as msle
+from keras.layers import Dropout, Flatten
+from keras.callbacks import ModelCheckpoint
+from keras.utils import np_utils, multi_gpu_model
+from keras.metrics import categorical_accuracy
+from keras.callbacks import EarlyStopping
+from keras.models import load_model
+from keras.constraints import max_norm
+
+
+class filter_model:
+
+	def __init__(self, **kwargs):
+		
+
+		if 'epochs' in kwargs:
+			self.epochs = kwargs['epochs']
+		else:
+			
+			self.epochs = 1000
+
+		
+		
+			self.batch_size = 10
+
+		if 'model_name' in kwargs:
+			self.model_name = kwargs['model_name']
+		else:
+			self.model_name = 'NN_filter.h5'
+
+		if 'connected_layers' in kwargs:
+			self.connected_layers = kwargs['connected_layers']
+
+		else:
+			
+			self.connected_layers = np.array([500, 250, 100, 50, 25, 10])
+
+	def create_model(self):
+		#start creating auto_encoder model 
+		print('creating model')
+		self.model = Sequential()
+
+		for layer_size in self.connected_layers:
+
+			self.model.add(Flatten(name='flatten'))
+			self.model.add(Dense (500, activation='relu'))
+      self.model.add(BatchRenormalization(axis=-1, beta_init=Constant(value=0.5)))
+
+		self.model.add(Dense(1))
+    self.model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+		self.model.add(Activation("elu"))
+
+		print(self.model.summary())
+		
+
+	def train_model(self, inputs, targets):
+
+    batch_print_callback = LambdaCallback(
+    on_batch_begin=lambda batch,logs: print(batch))
+
+		adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8, decay=0.0)
+		self.model.compile(loss='mse', optimizer=keras.optimizers.SGD(lr=0.01, momentum=0.9))
+		
+		#Only keep the best model according to loss	
+		checker = ModelCheckpoint(self.model_name, monitor='loss', verbose=1, validation_data=(inputs, targets),save_best_only=True)
+
+
+		self.model.fit(inputs, targets, epochs=self.epochs, batch_size = self.batch_size, verbose=1, callbacks=[batch_print_callback,checker])
+
+	  self.model.evaluate(inputs, targets,verbose=1)
+		
+
+if __name__ == "__main__":
+	
+	f = h5py.File('./data.h5', 'r')
+	inputs = np.transpose(f['X']).reshape((613,50))
+	targets = np.transpose(f['Y']).reshape((613,1))
+
+	new_model = filter_model(epochs = 1000, batch_size = 10)
+	new_model.create_model()
+	new_model.train_model(inputs, targets)
+	self.model.predict(inputs)
+	np.savetxt('results.txt', calculated_results)
