@@ -29,4 +29,16 @@ with open('data.txt', 'r') as f:
 for x in jsonparse:
     print(x['_id'])
     print(x['timestamp'])
-    print(x[entry])
+    print(x['entry'])
+
+#function in order to put multiple sections of the code together, this can be utilized to categorize data based on the 
+#number (also can be referred to as scaling) of the json elements needed from the data.  function parsejson is an example
+
+def parsejson(x):
+	idx=x['_id']
+	idtimestamp=x['_id']
+	identry=x['entry']
+	print print "the ids for the company data are {:>20f}, the times are  {:>20f} and the entries are {:>20f}".format(idx,idtimestamp,ientry)
+	
+jx=jsonparse	
+parsedx=parsejson(jx)
