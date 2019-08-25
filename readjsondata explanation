@@ -1,0 +1,4 @@
+The principle behind readjsondata.py is taking note of the ability of python to read in json files of scraped data by identifying key headers and reading in classifications based on them.  Different sections of files can also be readin through data slicing.  In this manner any desired section of the json data can be readin and printed.
+The .py file is devided into separate scripts.  Each one can be run as a separate code or together.  The codes basically provide scripts to read in the scraped json data and extract the vital elements of it.
+Individual sections of the code can be read in based on the desired headings of information to extract; this can be adjusted to count for the scaling, 
+or in other terms the segments of information, to be extracted.
