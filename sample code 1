@@ -84,19 +84,19 @@ class filter_model:
 
 	def train_model(self, inputs, targets):
 
-              batch_print_callback = LambdaCallback(
+                batch_print_callback = LambdaCallback(
    		 on_batch_begin=lambda batch,logs: print(batch))
 
-	       adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8, decay=0.0)
-	      self.model.compile(loss='mse', optimizer=keras.optimizers.SGD(lr=0.01, momentum=0.9))
+	        adam = Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-8, decay=0.0)
+	        self.model.compile(loss='mse', optimizer=keras.optimizers.SGD(lr=0.01, momentum=0.9))
 		
 		#Only keep the best model according to loss	
-	       checker = ModelCheckpoint(self.model_name, monitor='loss', verbose=1, validation_data=(inputs, targets),save_best_only=True)
+	        checker = ModelCheckpoint(self.model_name, monitor='loss', verbose=1, validation_data=(inputs, targets),save_best_only=True)
 
 
-	       self.model.fit(inputs, targets, epochs=self.epochs, batch_size = self.batch_size, verbose=1, callbacks=[batch_print_callback,checker])
+	        self.model.fit(inputs, targets, epochs=self.epochs, batch_size = self.batch_size, verbose=1, callbacks=[batch_print_callback,checker])
 
- 	       self.model.evaluate(inputs, targets,verbose=1)
+ 	        self.model.evaluate(inputs, targets,verbose=1)
 		
 
 if __name__ == "__main__":
