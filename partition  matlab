@@ -1,0 +1,2050 @@
+load 'Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+
+load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+% breakpoiComputntsblockf=Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+% 
+%  
+% 
+% 
+% %load 'log0to11hourHlambdaSext';
+% 
+% %breakpointsblock=-log0to11hourHlambdaSext;
+% 
+% 
+% [breakpointsblockfU,breakpointsblockfS,breakpointsblockfV] = (svd(((breakpointsblockf))));
+% 
+% Lambdafinebreaksf=(breakpointsblockfS*breakpointsblockfV')';
+% 
+% L00G00breaks=breakpointsblockfU(:,1)*(Lambdafinebreaksf(:,1))'
+% 
+% breakpointsblock=breakpointsblockf-L00G00breaks
+
+
+%  load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+% % 
+%  breakpointsblock=Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+
+
+%breakpointsblock=Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+breakpointsblock=Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+
+
+
+
+
+[breakpointsblockU,breakpointsblockS,breakpointsblockV] = (svd(((breakpointsblock))));
+
+
+Lambdafinebreaks=(breakpointsblockS*breakpointsblockV')';
+
+
+		  dlmwrite('finebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2',exp(breakpointsblock),'delimiter','\t','precision',15);
+
+		  dlmwrite('L0breaks.txt',Lambdafinebreaks(:,1),'delimiter','\t','precision',15);
+ 
+dlmwrite('nLL1breaks.txt',-Lambdafinebreaks(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('LL1breaks.txt',Lambdafinebreaks(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('LL2breaks.txt',Lambdafinebreaks(:,3),'delimiter','\t','precision',15);
+
+dlmwrite('nLL3breaks.txt',-Lambdafinebreaks(:,4),'delimiter','\t','precision',15);
+
+dlmwrite('LL3breaks.txt',Lambdafinebreaks(:,4),'delimiter','\t','precision',15);
+
+dlmwrite('LL4breaks.txt',Lambdafinebreaks(:,5),'delimiter','\t','precision',15);
+
+dlmwrite('LL5breaks.txt',Lambdafinebreaks(:,6),'delimiter','\t','precision',15);
+
+dlmwrite('LL6breaks.txt',Lambdafinebreaks(:,7),'delimiter','\t','precision',15);
+
+
+dlmwrite('LL7breaks.txt',Lambdafinebreaks(:,8),'delimiter','\t','precision',15);
+
+
+dlmwrite('LL8breaks.txt',Lambdafinebreaks(:,9),'delimiter','\t','precision',15);
+
+
+dlmwrite('LL9breaks.txt',Lambdafinebreaks(:,10),'delimiter','\t','precision',15);
+
+
+
+dlmwrite('LL10breaks.txt',Lambdafinebreaks(:,11),'delimiter','\t','precision',15);
+
+
+
+dlmwrite('LL11breaks.txt',Lambdafinebreaks(:,12),'delimiter','\t','precision',15);
+
+
+
+dlmwrite('LL12breaks.txt',Lambdafinebreaks(:,13),'delimiter','\t','precision',15);
+
+
+
+
+
+
+
+
+
+
+
+dlmwrite('G0breaks.txt',breakpointsblockU(:,1),'delimiter','\t','precision',15);
+
+dlmwrite('G0breaksT.txt',breakpointsblockU(:,1)','delimiter','\t','precision',15);
+
+dlmwrite('nLG1breaks.txt',-breakpointsblockU(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('LG1breaks.txt',breakpointsblockU(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('LG1breaksT.txt',breakpointsblockU(:,2)','delimiter','\t','precision',15);
+dlmwrite('LG2breaksT.txt',breakpointsblockU(:,3)','delimiter','\t','precision',15);
+dlmwrite('LG3breaksT.txt',breakpointsblockU(:,4)','delimiter','\t','precision',15);
+
+
+dlmwrite('LG2breaks.txt',breakpointsblockU(:,3),'delimiter','\t','precision',15);
+
+dlmwrite('nLG3breaks.txt',-breakpointsblockU(:,4),'delimiter','\t','precision',15);
+
+dlmwrite('LG3breaks.txt',breakpointsblockU(:,4),'delimiter','\t','precision',15);
+dlmwrite('LG4breaks.txt',breakpointsblockU(:,5),'delimiter','\t','precision',15);
+
+dlmwrite('LG5breaks.txt',breakpointsblockU(:,6),'delimiter','\t','precision',15);
+
+dlmwrite('LG6breaks.txt',breakpointsblockU(:,7),'delimiter','\t','precision',15);
+
+dlmwrite('LG7breaks.txt',breakpointsblockU(:,8),'delimiter','\t','precision',15);
+
+
+
+dlmwrite('LL0breaksT.txt',Lambdafinebreaks(:,1)','delimiter','\t','precision',15);
+
+dlmwrite('LL1breaksT.txt',-Lambdafinebreaks(:,2)','delimiter','\t','precision',15);
+
+dlmwrite('LL2breaksT.txt',Lambdafinebreaks(:,3)','delimiter','\t','precision',15);
+
+dlmwrite('LL3breaksT.txt',-Lambdafinebreaks(:,4)','delimiter','\t','precision',15);
+
+ 
+
+      
+
+
+dlmwrite('L0G0breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  ,'delimiter','\t','precision',15);
+
+L0G0break=breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))';
+
+L1G1break=breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))';
+
+L2G2break=breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))';
+
+L3G3break=breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))';
+
+
+dlmwrite('00to11hourHlambdaSext.txt',exp(-L0G0break)  ,'delimiter','\t','precision',15);
+
+
+
+
+
+dlmwrite('L0G0L1G1breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +  breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' ,'delimiter','\t','precision',15);
+
+
+dlmwrite('L0G0L1G1L2G2breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))','delimiter','\t','precision',15);
+
+dlmwrite('L0G0L1G1L2G2L3G3breaksp095.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(0.95*Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'    ,'delimiter','\t','precision',15);
+[u,s,v]=svd(breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(-Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'+breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))');
+Lamn=(s*v')';
+dlmwrite('L0nbreaks.txt',Lamn(:,1),'delimiter','\t','precision',15);
+dlmwrite('L1nbreaks.txt',Lamn(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('L0G0L1G1L2G2L3G3L4G4breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'   +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  ,'delimiter','\t','precision',15);
+
+dlmwrite('L0G0L1G1L3G3breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'  +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'     ,'delimiter','\t','precision',15);
+
+dlmwrite('L0G0L2G2L3G3breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))'  +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'     ,'delimiter','\t','precision',15);
+
+dlmwrite('L0G0L3G3breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'   +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'     ,'delimiter','\t','precision',15);
+
+
+dlmwrite('L0G0L1G1L2G2L3G3L4G4L5G5breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'   +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'   +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))' ,'delimiter','\t','precision',15);
+
+
+dlmwrite('L0G0L1G1L2G2L3G3L4G4L5G5L6G6breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))','delimiter','\t','precision',15);
+
+
+dlmwrite('L0G0L1G1L2G2L3G3L4G4L5G5L6G6L7G7breaks.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))','delimiter','\t','precision',15);
+
+
+dlmwrite('Allbreaksppp.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('AllbreakspnnML1G1.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('AllbreakspnnML2G2.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('AllbreakspnnML1G1L2G2.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'   +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('AllbreakspnnML1G1L2G2L3G3.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('AllbreakspnnML2G2L3G3.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('Allto1breaks.txt',breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+
+
+
+
+dlmwrite('AllbreakspnnML3G3.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('Allto1breaksML2G2L3G3.txt',breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'   +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+dlmwrite('Allto1breaksML1G1L3G3.txt',breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))'   +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+
+dlmwrite('AllbreakspnnML1G1L3G3.txt',breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))'  +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))'+breakpointsblockU(:,19)*(Lambdafinebreaks(:,19))' +breakpointsblockU(:,20)*(Lambdafinebreaks(:,20))','delimiter','\t','precision',15);
+
+
+
+dlmwrite('L1G1L2G2L3G3breaks.txt',breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'    ,'delimiter','\t','precision',15);
+
+
+
+allto1=-(breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))')
+
+	 expallto1=exp(allto1);
+
+	 xi=exp(breakpointsblock);
+
+     absbreak=breakpointsblock;
+
+
+dlmwrite('66allto1ratio01ext.txt',allto1 ,'delimiter','\t','precision',15);
+
+	 dlmwrite('exp66allto1ratio01ext.txt',expallto1 ,'delimiter','\t','precision',15);
+
+
+ l0sumcomponents=sum(xi.*(absbreak-L0G0break ) - xi + (exp(L0G0break)));
+
+			    l01sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break  ) - xi + ( (exp(L0G0break))).*((exp(L1G1break))) );
+
+	 l012sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break- L2G2break ) - xi + ( (exp(L0G0break)).*(exp(L1G1break))).*((exp(L2G2break))) );
+
+			    l0123sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break- L2G2break- L3G3break ) - xi + ( (exp(L0G0break)).*(exp(L1G1break))).*( (exp(L2G2break)).*(exp(L3G3break)) ) );
+
+
+ dlmwrite('exp0123sumcomponents.txt',( (exp(L0G0break)).*(exp(L1G1break))).*( (exp(L2G2break)).*(exp(L3G3break)) ) ,'delimiter','\t','precision',15);
+
+
+
+components=(xi.*(absbreak-L0G0break) - xi + exp(L0G0break));
+
+	   dlmwrite('l0sumcomponents.txt',(l0sumcomponents)' ,'delimiter','\t','precision',15);
+
+dlmwrite('l01sumcomponents.txt',(l01sumcomponents)' ,'delimiter','\t','precision',15);
+
+	   dlmwrite('l012sumcomponents.txt',(l012sumcomponents)' ,'delimiter','\t','precision',15);
+
+dlmwrite('l0123sumcomponents.txt',(l0123sumcomponents)' ,'delimiter','\t','precision',15);
+
+
+
+dlmwrite('sumxiInxiT.txt',(sum(xi.*(absbreak-L0G0break)))' ,'delimiter','\t','precision',15);
+
+	 dlmwrite('sumxi.txt',(sum(xi))' ,'delimiter','\t','precision',15);
+
+dlmwrite('components.txt',components' ,'delimiter','\t','precision',15);
+
+load 'ExtraCellularC';
+
+load 'IntraCellularC';
+
+dlmwrite('sumExtra.txt',(sum(ExtraCellularC'))' ,'delimiter','\t','precision',15);
+
+dlmwrite('sumIntra.txt',(sum(IntraCellularC') )','delimiter','\t','precision',15);
+
+
+load 'G0breaks214';
+
+load 'G1breaks214';
+
+load 'G2breaks214';
+
+load 'G3breaks214';
+
+
+load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+
+t10hroneminutesblock=Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+[t10hroneminutesblockU,t10hroneminutesblockS,t10hroneminutesblockV] = (svd((t10hroneminutesblock)));
+
+Lambdat10hroneminutesblock=(t10hroneminutesblockS*t10hroneminutesblockV')';
+
+dlmwrite('t10L1breaks.txt',Lambdat10hroneminutesblock(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('t10L2breaks.txt',Lambdat10hroneminutesblock(:,3),'delimiter','\t','precision',15);
+
+
+
+
+
+% ToSortG0=G0breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG0(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG0(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG0breaks214',b,'delimiter','\t','precision',15);
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% ToSortG=G1breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG1breaks214',b,'delimiter','\t','precision',15);
+%  
+%  
+%  
+% 
+%  
+%  
+%  ToSortG2=G2breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG2(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG2(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG2breaks214',b,'delimiter','\t','precision',15);
+% 
+%  
+%  
+%  ToSortG3=G3breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG3(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG3(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG3breaks214',b,'delimiter','\t','precision',15);
+% 
+%  
+%  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ load 'Processesallrangesplitfullbreakpointsheatmapcluster10hr';
+
+Processblock=Processesallrangesplitfullbreakpointsheatmapcluster10hr;
+ 
+ 
+		  [Processesallrangesplitfullbreakpointsheatmapcluster10hrU,Processesallrangesplitfullbreakpointsheatmapcluster10hrS,ProcessesallrangesplitfullbreakpointsheatmapV]=svd(Processesallrangesplitfullbreakpointsheatmapcluster10hr);
+ 
+ 
+ 
+ 
+  load 'PMMsortedG0breaks214';
+ 
+ G0Pbreak = PMMsortedG0breaks214;
+ 
+ 
+ load 'PMMsortedG1breaks214';
+ 
+ G1Pbreak = PMMsortedG1breaks214;
+ 
+  load 'PMMsortedG2breaks214';
+ 
+ G2Pbreak = PMMsortedG2breaks214;
+ 
+ 
+ load 'PMMsortedG3breaks214';
+ 
+ G3Pbreak = PMMsortedG3breaks214;
+ 
+  LG0Pbreak=G0Pbreak(:,1)*(Lambdafinebreaks(:,1))';
+ 
+ LG1Pbreak=G1Pbreak(:,1)*(Lambdafinebreaks(:,2))';
+ 
+ 
+  LG2Pbreak=G2Pbreak(:,1)*(Lambdafinebreaks(:,3))';
+  
+   LG3Pbreak=G3Pbreak(:,1)*(Lambdafinebreaks(:,4))';
+ 
+ 
+
+ 
+   dlmwrite('expLG0123Pbreak',exp(LG0Pbreak + LG1Pbreak + LG2Pbreak +LG3Pbreak ),'delimiter','\t','precision',15);
+   
+   dlmwrite('expLG012Pbreak',exp(LG0Pbreak + LG1Pbreak + LG2Pbreak  ),'delimiter','\t','precision',15);
+   
+dlmwrite('expLG01Pbreak',exp(LG0Pbreak + LG1Pbreak),'delimiter','\t','precision',15);
+
+dlmwrite('expLG0Pbreak',exp(LG0Pbreak),'delimiter','\t','precision',15);
+
+dlmwrite('expLG1Pbreak',exp(LG1Pbreak),'delimiter','\t','precision',15);
+
+dlmwrite('expLG123Pbreak',exp(LG1Pbreak +LG2Pbreak +LG3Pbreak ),'delimiter','\t','precision',15);
+
+
+
+dlmwrite('LG1Pbreak',LG1Pbreak,'delimiter','\t','precision',15);
+
+dlmwrite('LG2Pbreak',LG2Pbreak,'delimiter','\t','precision',15);
+
+dlmwrite('LG3Pbreak',LG3Pbreak,'delimiter','\t','precision',15);
+
+
+dlmwrite('expbreak0',exp(breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' ),'delimiter','\t','precision',15);
+
+dlmwrite('expbreak01',exp(breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' + breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' ),'delimiter','\t','precision',15);
+
+dlmwrite('expbreak012',exp(breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' + breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' + breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))'),'delimiter','\t','precision',15);
+
+dlmwrite('expbreak0123',exp(breakpointsblockU(:,1)*(Lambdafinebreaks(:,1))' + breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'+ breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' + breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))' ),'delimiter','\t','precision',15);
+
+
+dlmwrite('expbreak1',exp( breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' ),'delimiter','\t','precision',15);
+
+
+dlmwrite('expbreak123',exp(breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'+ breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' + breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))' ),'delimiter','\t','precision',15);
+
+
+%dlmwrite('expbreak',exp(Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2),'delimiter','\t','precision',15);
+
+
+
+%    map = [0, 1, 0
+%      0, 0.8, 0
+%      0, 0.6, 0
+%      0, 0.4, 0
+%      0, 0.5, 0
+%       0.75, 0,0
+%        0.85, 0,0
+%      0.9, 0, 0
+%      1, 0, 0];
+
+map = [ 0, 0.8, 0
+0, 0.6, 0
+    0, 0.4, 0
+   0.4, 0,0
+    0.6, 0,0
+    0.8, 0,0];
+ 
+
+
+ 
+ %+ LG3Pbreak(1:34,1:102)
+ 
+ %+LG2Pbreak(1:34,1:102)+ LG3Pbreak(1:34,1:102) 
+ 
+ % hmo = HeatMap(LG1Pbreak(1:34,1:102)  );
+ 
+ load 'LG123Pbreak';
+		
+filename2 = 'columntimescalelambdabreaks.txt';
+ 
+%  filename1 = 'G123ordered.txt';
+
+filename1 = 'LabeledProcessesbreaks214.txt';
+
+AAAA=importdata(filename2);
+
+
+%AAA={'-1.9333333333',' ','','-1.7333333333','','','-1.6833333333','','','-1.6','','','-1.3333333333','','','-1.2833333333','','','-1.2333333333','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','0.2666666667','','','-0.05','','','0','','','0.2333333333','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.4','','','4.9','','','5.4','','','5.9','','','6.4','','','6.9','','','7.4','','','7.9'};
+
+
+AAA={'-1.93',' ','','-1.73','','','-1.68','','','-1.6','','','-1.33','','','-1.28','','','-1.23','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','-0.27','','','-0.05','','','0','','','0.23','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.4','','','4.9','','','5.4','','','5.9','','','6.4','','','6.9','','','7.4','','','7.9'};
+
+
+%AAA={'-1.93',' ','','-1.73','','','-1.68','','','-1.6','','','-1.33','','','-1.28','','','-1.23','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','-0.27','','','-0.05','','','0','','','0.23','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.38','','','4.73','','','5.23','','','5.73','','','6.23','','','6.73','','','7.23','','','7.57'};
+
+
+AA=importdata(filename1);
+
+%colormap(flipud(colormap))
+
+
+
+
+load 'ProcessesG0breaks214';
+
+
+
+load 'ProcessesG1breaks214';
+
+LG1ProcessPbreak=ProcessesG1breaks214*(-Lambdafinebreaks(:,2))';
+
+load 'ProcessesG2breaks214';
+
+LG2ProcessPbreak=ProcessesG2breaks214*(Lambdafinebreaks(:,3))';
+
+load 'ProcessesG3breaks214';
+
+LG3ProcessPbreak=ProcessesG3breaks214*(-Lambdafinebreaks(:,4))';
+
+% +LG2ProcessPbreak(1:24,1:102) +   LG3ProcessPbreak(1:24,1:102)
+
+dlmwrite('LG1ProcessPbreak',LG1ProcessPbreak,'delimiter','\t','precision',15);
+
+load 'ProcessesG4breaks214';
+
+load 'ProcessesG5breaks214';
+
+load 'ProcessesG6breaks214';
+
+load 'ProcessesG7breaks214';
+
+
+
+
+LG4ProcessPbreak=ProcessesG4breaks214*(Lambdafinebreaks(:,5))';
+
+LG5ProcessPbreak=ProcessesG5breaks214*(Lambdafinebreaks(:,6))';
+
+LG6ProcessPbreak=ProcessesG6breaks214*(Lambdafinebreaks(:,7))';
+
+LG7ProcessPbreak=ProcessesG7breaks214*(Lambdafinebreaks(:,8))';
+
+
+
+dlmwrite('LG6ProcessPbreak.txt', LG6ProcessPbreak,'delimiter','\t','precision',15);
+
+dlmwrite('LG1ProcessPbreak.txt', LG1ProcessPbreak,'delimiter','\t','precision',15);
+
+load 'p0p8DerivLL1breaksT'
+ 
+  load 'p0p8DerivLL2breaksT'
+  
+   load 'p0p8DerivLL3breaksT'
+   
+  load 'p0p8DerivLL0breaksT'
+   
+   load 'n0p6DerivLL1breaksT'
+    
+     load 'n0p6DerivLL2breaksT'
+     
+     load 'n0p6DerivLL3breaksT' 
+     
+       load 'n0p6DerivLL0breaksT'
+     
+     dlmwrite('fluxn0p6.txt', ProcessesG0breaks214*n0p6DerivLL0breaksT + ProcessesG1breaks214*n0p6DerivLL1breaksT + ProcessesG2breaks214*n0p6DerivLL2breaksT + ProcessesG3breaks214*n0p6DerivLL3breaksT,'delimiter','\t','precision',15);
+
+     
+
+dlmwrite('flux0p8.txt', ProcessesG0breaks214*p0p8DerivLL0breaksT +  ProcessesG1breaks214*p0p8DerivLL1breaksT + ProcessesG2breaks214*p0p8DerivLL2breaksT + ProcessesG3breaks214*p0p8DerivLL3breaksT,'delimiter','\t','precision',15);
+
+
+
+
+dlmwrite('flux0p8all.txt', breakpointsblockU(:,1)*p0p8DerivLL0breaksT -  breakpointsblockU(:,2)*p0p8DerivLL1breaksT + breakpointsblockU(:,3)*p0p8DerivLL2breaksT - breakpointsblockU(:,4)*p0p8DerivLL3breaksT,'delimiter','\t','precision',15);
+
+
+
+
+
+
+load 'G1hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2'
+
+
+load 'L1hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2'
+
+
+load 'G4hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2'
+
+
+load 'L4hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2'
+
+
+[G1section,S1Section,V1Section]=svd(G1hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2);
+
+
+[G4section,S4Section,V4Section]=svd(G4hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2);
+
+dlmwrite('Lambda11hrSection.txt',((G1section(:,2))'*L1hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2)','delimiter','\t','precision',15);
+
+dlmwrite('Lambda14hrSection.txt',((G4section(:,2))'*L4hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2)','delimiter','\t','precision',15);
+
+dlmwrite('Lambda21hrSection.txt',((G1section(:,3))'*L1hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2)','delimiter','\t','precision',15);
+
+dlmwrite('Lambda24hrSection.txt',((G4section(:,3))'*L4hourLnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2)','delimiter','\t','precision',15);
+
+dlmwrite('G1section.txt',G1section(:,2),'delimiter','\t','precision',15);
+
+dlmwrite('G4section.txt',G4section(:,2),'delimiter','\t','precision',15);
+
+rawbreaks = exp(breakpointsblock);
+
+
+AvgG0=(rawbreaks)'*breakpointsblockU(:,1);
+
+			    LLL0=Lambdafinebreaks(:,1);
+
+
+AvgG1=(rawbreaks)'*(breakpointsblockU(:,2));
+
+			    LLL1=Lambdafinebreaks(:,2);
+
+                
+
+rAvgG1=(rawbreaks)'*(-breakpointsblockU(:,2));
+
+			   
+
+
+AvgG2=(rawbreaks)'*(breakpointsblockU(:,3));
+
+			    LLL2=Lambdafinebreaks(:,3);
+                
+                LLL3=Lambdafinebreaks(:,4);
+
+dlmwrite('rawbreaks.txt',rawbreaks,'delimiter','\t','precision',15);
+                
+                
+                
+dlmwrite('AvgG0.txt',AvgG0,'delimiter','\t','precision',15);
+                
+dlmwrite('rAvgG1.txt',rAvgG1,'delimiter','\t','precision',15);
+dlmwrite('AvgG1.txt',AvgG1,'delimiter','\t','precision',15);
+
+
+dlmwrite('AvgG2.txt',AvgG2,'delimiter','\t','precision',15);
+
+
+breaksortLLL0=sort(LLL0);
+
+
+
+%sortLLL1=(linspace(5,20,118))
+
+breaksortLLL1=(sort(LLL1))';
+
+breaksortLLL2=(sort(LLL2))';
+
+breaksortLLL3=(sort(LLL3))';
+
+% 
+% sortLLL1=([10 6 0 -8 -16])
+% 
+% %sortLLL2=([10 5 -4 -2 -5])
+% 
+% sortLLL2=([10 -5 -4 -2 5])
+
+
+dlmwrite('ppsortLLL2',[linspace(-5,10,107) linspace(10,-5,107)],'delimiter','\t','precision',15);
+
+
+%  psortLLL2=linspace(-5,10,214);
+
+%  psortLLL2=linspace(-9,9,50) ;
+% %  
+%   psortLLL1=linspace(2,22,50);
+
+% psortLLL2=linspace(-15,7,50) ;
+%  
+%  psortLLL1=linspace(-15,22,50);
+%  
+
+% psortLLL2=linspace(-15,10,50) ;
+%  
+%  psortLLL1=linspace(-15,22,50);
+ 
+ 
+ 
+% psortLLL2=linspace(-3,1,50) ;
+%  
+%  psortLLL1=linspace(-9,-5,50);
+ 
+ 
+
+% psortLLL2=linspace(-10,10,50) ;
+%  
+%  psortLLL1=linspace(-15,12,50);
+
+
+ % psortLLL2=linspace(-10,10,50) ;
+%  
+%  psortLLL1=linspace(-15,12,50);
+
+%  psortLLL2=linspace(-5,15,50) ;
+%  
+%  psortLLL1=linspace(-25,-5,50);
+
+% 
+ psortLLL2=linspace(-15,10,50) ;
+ 
+ psortLLL1=linspace(-15,22,50);
+
+dlmwrite('psortLLL1',psortLLL1,'delimiter','\t','precision',15);
+
+dlmwrite('psortLLL2',psortLLL2,'delimiter','\t','precision',15);
+
+% 
+%  psortLLL2=linspace(-12,10,50) ;
+%  
+%  psortLLL1=linspace(-12,22,50);
+
+
+ psortLLL0=linspace(35,60,50);
+ 
+ sortLLL2=psortLLL2;
+ 
+ sortLLL1=psortLLL1;
+ 
+ sortLLL0=psortLLL0;
+
+ %sortLLL2=[10 8 4 0 -5 -2 1 3 5]
+ 
+%   sortLLL2=[10 8 6 4 2 0 -2 -4 -5]
+% %  
+%   sortLLL1=[16 15 14 13 12 11 10 9  8 7 6 5 4 3  2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -16];
+
+ssortLLL1=([10 6 0 -8 -16])';
+
+sssortLLL2=([10 5 -4 -2 -5])';
+
+ssortLLL2=([10 -5 -4 -2 5])';
+
+
+
+dlmwrite('sortplusL210n5n4n25',bsxfun(@plus,ssortLLL1.',ssortLLL2),'delimiter','\t','precision',15);
+dlmwrite('sortplusL2105n4n2n5',bsxfun(@plus,ssortLLL1.',sssortLLL2),'delimiter','\t','precision',15);
+
+sortAvgG0=sort(AvgG0);
+
+
+sortAvgG1=sort(AvgG1);
+
+sortAvgG2=sort(AvgG2);
+
+dlmwrite('sortLLL0',sortLLL0','delimiter','\t','precision',15);
+
+dlmwrite('sortLLL1',sortLLL1','delimiter','\t','precision',15);
+
+dlmwrite('sortLLL11',(sortLLL1(3))','delimiter','\t','precision',15);
+
+dlmwrite('sortLLL2',sortLLL2','delimiter','\t','precision',15);
+
+dlmwrite('LLL0',LLL0,'delimiter','\t','precision',15);
+
+dlmwrite('LLL1',LLL1,'delimiter','\t','precision',15);
+
+dlmwrite('LLL2',LLL2,'delimiter','\t','precision',15);
+
+
+
+L0AvgG0=[AvgG0 LLL0];
+
+L1AvgG1=[AvgG1 LLL1];
+
+L2AvgG2=[AvgG2 LLL2];
+
+load 'columntimescalelambdabreaks'
+
+columntime=columntimescalelambdabreaks;
+
+  % trialsum=  L0G0break+breakpointsblockU(:,1)*(sortLLL1) + breakpointsblockU(:,2)*(sortLLL2)
+
+%	 sumcomponentsenergy=sum(xi.*(absbreak-( trialsum )) - xi + exp(trialsum))
+
+
+
+
+
+% tL1AvgG1=[L1AvgG1 columntime]
+% 
+% tL2AvgG2=[L2AvgG2 columntime]
+
+% % sort only the first column, return indices of the sort
+ [~,sorted_inds] = sort( L0AvgG0(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+ sortL0AvgG0 = L0AvgG0(sorted_inds,:); 
+
+
+
+% % sort only the first column, return indices of the sort
+ [~,sorted_inds] = sort( L1AvgG1(:,2) );
+% % reorder the rows based on the sorted indices
+ sortL1AvgG1 = L1AvgG1(sorted_inds,:); 
+
+% % sort only the first column, return indices of the sort
+ [~,sorted_inds] = sort( L2AvgG2(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+ sortL2AvgG2 = L2AvgG2(sorted_inds,:); 
+% 
+%  
+%  
+%  dlmwrite('sortL0AvgG0',sortL0AvgG0,'delimiter','\t','precision',15);
+%  
+%  dlmwrite('sortL1AvgG1',sortL1AvgG1,'delimiter','\t','precision',15);
+% 
+% dlmwrite('sortL2AvgG2',sortL2AvgG2,'delimiter','\t','precision',15);
+% 
+
+% FreeE01=AvgG2.*LLL2 + AvgG1.*LLL1
+% 
+% 
+% FreeE0=AvgG0.*LLL0
+% 
+%  FreeE1=AvgG1.*LLL1
+% % 
+%  FreeE2=AvgG2.*LLL2
+
+ 
+
+
+FreeE01=sortL1AvgG1(:,1).*sortL1AvgG1(:,2)+sortL0AvgG0(:,1).*sortL0AvgG0(:,2);
+ 
+ FreeE1=sortL1AvgG1(:,1).*sortL1AvgG1(:,2);
+
+FreeE2=sortL2AvgG2(:,1).*sortL2AvgG2(:,2);
+
+ FreeEF=FreeE1+FreeE2;
+
+	 %contourf(sortLLL1,sortLLL2,(sum(xi.*(absbreak-(  L0G0break+breakpointsblockU(:,1)*(sortLLL1)' + breakpointsblockU(:,2)*(sortLLL2)' )) - xi + exp( L0G0break+breakpointsblockU(:,1)*(sortLLL1)' + breakpointsblockU(:,2)*(sortLLL2)')))')
+
+     [X,Y]=meshgrid(sortLLL1,sortLLL2)
+   disp(size(X))
+    disp(size(sortLLL1))
+    disp(size(breakpointsblockU(:,1)))
+    Xp=X'
+     Yp=Y'
+    dlmwrite('XXXX',X,'delimiter','\t','precision',15);
+     %Z=X + Y
+     %ZZ=(sum(xi.*(absbreak-(  L0G0break+breakpointsblockU(:,1)*(Xp(:,1))' + breakpointsblockU(:,2)*(Yp(:,1))' )) - xi + exp( L0G0break+breakpointsblockU(:,1)*(Xp(:,1))' + breakpointsblockU(:,2)*(Yp(:,1))')))'
+% x = sortLLL1';
+% y = sortLLL2';
+x = (1:214);
+y = (1:214);
+% xx=[1 2 3]
+% yy=[1 2 3]
+xx=linspace(-15,10,214);
+yy=linspace(-5,10,214);
+px=x'
+py=y'
+     
+     %ZZ=bsxfun((sum((xi(:,21)).*(absbreak(:,21)-(  L0G0break(:,21)+breakpointsblockU(:,1)*(x) + breakpointsblockU(:,2)*(y) )) - xi(:,21) + exp( L0G0break(:,21)+breakpointsblockU(:,1)*(x) + breakpointsblockU(:,2)*(y)))),x,y)
+
+    %fun = @(xx,yy)(sum(xi(:,21).*(absbreak(:,21) + (xx*breakpointsblockU(:,2)')' + (yy*y)')))
+     
+    %fun = @(xx,yy)(sum((xi(:,21)).*(absbreak(:,21)-(  L0G0break(:,21)+(xx*breakpointsblockU(:,2)')' + (yy*breakpointsblockU(:,3)')' )) - xi(:,21) + exp( L0G0break(:,21)+(xx*breakpointsblockU(:,2)')' +  (yy*breakpointsblockU(:,3)')'   )))
+    
+   
+     %fun = @(xx,yy)bsxfun(@plus, bsxfun(@times,sortLLL1',xi(:,21)) ) 
+ 
+    % fun = @(sortLLL1,sortLLL2)  - sum(xi(:,21)'.*bsxfun(@times,sortLLL1',breakpointsblockU(:,2)))
+ 
+     disp(size(xi(:,21)'))
+     
+    % disp(size( bsxfun(@times,xi(:,21), bsxfun(@times,sortLLL1',breakpointsblockU(:,2)))))
+%       x1=sortLLL1
+%         y1=sortLLL2
+%     
+%     [tsortLLL1,tsortLLL2] = meshgrid(x1,y1);
+    
+%     ZZ= sum(xi(:,21).*absbreak(:,21)) -  sum(xi(:,21).*L0G0break(:,21)) - sum( bsxfun(@times, tsortLLL1',(breakpointsblockU(:,2).*xi(:,21))' )) - sum( bsxfun(@times, tsortLLL2,(breakpointsblockU(:,3).*xi(:,21))' )) ...
+%      - sum(xi(:,21)) 
+%     
+ 
+expL0G0=exp(bsxfun(@times,sortLLL0, breakpointsblockU(:,1) ));
+expL1G1=exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) ));
+expL2G2=exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3) ));
+expL3G3=exp(bsxfun(@times,breaksortLLL3, breakpointsblockU(:,4) ));
+
+expL0G0break1=exp(L0G0break(:,43));
+
+
+expL0G0break2=exp(L0G0break(:,80));
+
+expL0G0break3=exp(L0G0break(:,13));
+
+
+expL0G0break4=exp(L0G0break(:,90));
+
+expL0G0break5=exp(L0G0break(:,60));
+
+
+expL0G0break6=exp(L0G0break(:,30));
+
+expL0G0break7=exp(L0G0break(:,100));
+
+expL0G0break8=exp(L0G0break(:,106));
+
+
+expL0G0break9=exp(L0G0break(:,112));
+
+expL0G0break10=exp(L0G0break(:,118));
+
+expL0G0break11=exp(L0G0break(:,20));
+
+expL0G0break12=exp(L0G0break(:,70));
+
+expL0G0break13=exp(L0G0break(:,25));
+
+expL0G0break14=exp(L0G0break(:,35));
+
+expL0G0break15=exp(L0G0break(:,45));
+
+expL0G0break16=exp(L0G0break(:,55));
+
+expL0G0break17=exp(L0G0break(:,65));
+
+expL0G0break18=exp(L0G0break(:,75));
+
+expL0G0break19=exp(L0G0break(:,50));
+
+expL0G0break20=exp(L0G0break(:,5));
+
+expL0G0break21=exp(L0G0break(:,10));
+
+expL0G0break22=exp(L0G0break(:,40));
+
+expL0G0break23=exp(L0G0break(:,39));
+
+expL0G0break24=exp(L0G0break(:,41));
+
+expL0G0break25=exp(L0G0break(:,49));
+
+expL0G0break26=exp(L0G0break(:,1));
+
+
+
+
+SumL1L01 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L21 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L22 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L23 = zeros(length(sortLLL1),length(sortLLL1));
+
+
+SumL1L24 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L25 = zeros(length(sortLLL1),length(sortLLL1));
+
+
+SumL1L26 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L27 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L28 = zeros(length(sortLLL1),length(sortLLL1));
+
+
+SumL1L29 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L30 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L31 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L32 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L33 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L34 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L35 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L36 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L37 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L38 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L39 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L40 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L41 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L42 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L43 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L44 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L45 = zeros(length(sortLLL1),length(sortLLL1));
+
+SumL1L46 = zeros(length(sortLLL1),length(sortLLL1));
+
+
+
+dlmwrite('expL1G1',expL1G1 ,'delimiter','\t','precision',15);
+
+dlmwrite('expbsxfuntimessort',exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) ,'delimiter','\t','precision',15);
+dlmwrite('expbsxfuntimessort2',exp(breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))') ,'delimiter','\t','precision',15);
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L21(i,j)=sum((expL1G1(:,i)).*(expL0G0break1.*expL2G2(:,j)));
+end
+end
+
+
+
+% for i=1:size(expL1G1,2)
+% for j=1:size(expL1G1,2)
+%    SumL1L01(i,j)=sum((expL0G0(:,i)).*(expL1G1(:,j)));
+% end
+% end
+% 
+%  SumL1L0t1=sum((expL0G0(:,100)).*(expL1G1(:,100)));
+
+
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L22(i,j)=sum((expL1G1(:,i)).*(expL0G0break2.*expL2G2(:,j)));
+end
+end
+
+
+
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L23(i,j)=sum((expL1G1(:,i)).*(expL0G0break3.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L24(i,j)=sum((expL1G1(:,i)).*(expL0G0break4.*expL2G2(:,j)));
+end
+end
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L25(i,j)=sum((expL1G1(:,i)).*(expL0G0break5.*expL2G2(:,j)));
+end
+end
+
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L26(i,j)=sum((expL1G1(:,i)).*(expL0G0break6.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L27(i,j)=sum((expL1G1(:,i)).*(expL0G0break7.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L28(i,j)=sum((expL1G1(:,i)).*(expL0G0break8.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L29(i,j)=sum((expL1G1(:,i)).*(expL0G0break9.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L30(i,j)=sum((expL1G1(:,i)).*(expL0G0break10.*expL2G2(:,j)));
+end
+end
+
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L31(i,j)=sum((expL1G1(:,i)).*(expL0G0break11.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L32(i,j)=sum((expL1G1(:,i)).*(expL0G0break12.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L33(i,j)=sum((expL1G1(:,i)).*(expL0G0break13.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L34(i,j)=sum((expL1G1(:,i)).*(expL0G0break14.*expL2G2(:,j)));
+end
+end
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L35(i,j)=sum((expL1G1(:,i)).*(expL0G0break15.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L36(i,j)=sum((expL1G1(:,i)).*(expL0G0break16.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L37(i,j)=sum((expL1G1(:,i)).*(expL0G0break17.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L38(i,j)=sum((expL1G1(:,i)).*(expL0G0break18.*expL2G2(:,j)));
+end
+end
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L39(i,j)=sum((expL1G1(:,i)).*(expL0G0break19.*expL2G2(:,j)));
+end
+end
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L40(i,j)=sum((expL1G1(:,i)).*(expL0G0break20.*expL2G2(:,j)));
+end
+end
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L41(i,j)=sum((expL1G1(:,i)).*(expL0G0break21.*expL2G2(:,j)));
+end
+end
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L42(i,j)=sum((expL1G1(:,i)).*(expL0G0break22.*expL2G2(:,j)));
+end
+end
+
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L43(i,j)=sum((expL1G1(:,i)).*(expL0G0break23.*expL2G2(:,j)));
+end
+end
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L44(i,j)=sum((expL1G1(:,i)).*(expL0G0break24.*expL2G2(:,j)));
+end
+end
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L45(i,j)=sum((expL1G1(:,i)).*(expL0G0break25.*expL2G2(:,j)));
+end
+end
+
+
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   SumL1L46(i,j)=sum((expL1G1(:,i)).*(expL0G0break26.*expL2G2(:,j)));
+end
+end
+
+
+
+for k=1:118
+for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   Sum3d(i,j,k)=sum((expL1G1(:,i)).*(exp(L0G0break(:,k)).*expL2G2(:,j)));
+end
+end
+end
+
+dlmwrite('SumL1L44',SumL1L44,'delimiter','\t','precision',15);
+
+dlmwrite('sumxi', (xi),'delimiter','\t','precision',15);
+% dlmwrite('sumxitrial', (((exp(L0G0break)).*expL1G1).*expL2G2),'delimiter','\t','precision',15);
+% dlmwrite('sumxitrial3', (((exp(L0G0break)).*expL1G1).*expL2G2).*expL3G3,'delimiter','\t','precision',15);
+dlmwrite('sum0', SumL1L21,'delimiter','\t','precision',15);
+dlmwrite('0exp', expL1G1(:,1).*expL2G2(:,1),'delimiter','\t','precision',15);
+dlmwrite('sum0exp', sum(expL1G1(:,1).*expL2G2(:,1)),'delimiter','\t','precision',15);
+dlmwrite('sum0expexpL1G1',expL1G1 ,'delimiter','\t','precision',15);
+dlmwrite('sum0expexpL1G10',- sum(xi(:,43))+SumL1L21 ,'delimiter','\t','precision',15);
+%dlmwrite('sumx012', exp(L0G0break(:,43))*SumL1L2,'delimiter','\t','precision',15);
+
+%     SumL1L2=[]
+
+
+   
+
+% 
+    fun1 = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) ...
+    - sum(xi(:,43))+SumL1L21 ;
+
+ funFE = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) 
+   
+ 
+ 
+%      fun1 = @(sortLLL0,sortLLL1) sum(xi(:,118).*absbreak(:,118)) -   bsxfun(@plus,(sum( bsxfun(@times,sortLLL0, breakpointsblockU(:,1).*xi(:,118)) ) ).',sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,118))) ) ...
+%      - sum(xi(:,118))+SumL1L01 ;
+
+  funt1 = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -    sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,-12.734693877551, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,-12.9591836734694, breakpointsblockU(:,3).*xi(:,43))) ) ...
+     - sum(xi(:,43))+ SumL1L21(4,5);
+ 
+ funt2 = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -    sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,-13.4897959183673, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,-14.4897959183673, breakpointsblockU(:,3).*xi(:,43))) ) ...
+     - sum(xi(:,43))+ SumL1L21(3,2);
+ 
+ 
+ 
+ fun2 = @(sortLLL1,sortLLL2) sum(xi(:,80).*absbreak(:,80)) -  sum(xi(:,80).*L0G0break(:,80)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,80)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,80))) ) ...
+     - sum(xi(:,80))+SumL1L22;
+   
+ 
+ fun3 = @(sortLLL1,sortLLL2) sum(xi(:,13).*absbreak(:,13)) -  sum(xi(:,13).*L0G0break(:,13)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,13)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,13))) ) ...
+     - sum(xi(:,13))+SumL1L23 ;
+ 
+ 
+ fun4 = @(sortLLL1,sortLLL2) sum(xi(:,90).*absbreak(:,90)) -  sum(xi(:,90).*L0G0break(:,90)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, (breakpointsblockU(:,2).*xi(:,90)) ) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,90))) ) ...
+     - sum(xi(:,90))+SumL1L24 ;
+ 
+ fun5 = @(sortLLL1,sortLLL2) sum(xi(:,60).*absbreak(:,60)) -  sum(xi(:,60).*L0G0break(:,60)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,60)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,60))) ) ...
+     - sum(xi(:,60))+SumL1L25 ;
+ 
+ 
+  fun6 = @(sortLLL1,sortLLL2) sum(xi(:,30).*absbreak(:,30)) -  sum(xi(:,30).*L0G0break(:,30)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,30)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,30))) ) ...
+     - sum(xi(:,30))+SumL1L26 ;
+ 
+  fun7 = @(sortLLL1,sortLLL2) sum(xi(:,100).*absbreak(:,100)) -  sum(xi(:,100).*L0G0break(:,100)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,100)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,100))) ) ...
+     - sum(xi(:,100))+SumL1L27 ;
+ 
+ 
+  fun8 = @(sortLLL1,sortLLL2) sum(xi(:,106).*absbreak(:,106)) -  sum(xi(:,106).*L0G0break(:,106)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,106)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,106))) ) ...
+     - sum(xi(:,106))+SumL1L28 ;
+ 
+  fun9 = @(sortLLL1,sortLLL2) sum(xi(:,112).*absbreak(:,112)) -  sum(xi(:,112).*L0G0break(:,112)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,112)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,112))) ) ...
+     - sum(xi(:,112))+SumL1L29 ;
+ 
+  fun10 = @(sortLLL1,sortLLL2) sum(xi(:,118).*absbreak(:,118)) -  sum(xi(:,118).*L0G0break(:,118)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,118)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,118))) ) ...
+     - sum(xi(:,118))+SumL1L30 ;
+
+
+ fun11 = @(sortLLL1,sortLLL2) sum(xi(:,20).*absbreak(:,20)) -  sum(xi(:,20).*L0G0break(:,20)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,20)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,20))) ) ...
+     - sum(xi(:,20))+SumL1L31 ;
+
+ fun12 = @(sortLLL1,sortLLL2) sum(xi(:,70).*absbreak(:,70)) -  sum(xi(:,70).*L0G0break(:,70)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,70)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,70))) ) ...
+     - sum(xi(:,70))+SumL1L32 ;
+
+ 
+ fun13 = @(sortLLL1,sortLLL2) sum(xi(:,25).*absbreak(:,25)) -  sum(xi(:,25).*L0G0break(:,25)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,25)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,25))) ) ...
+     - sum(xi(:,25))+SumL1L33 ;
+
+ fun14 = @(sortLLL1,sortLLL2) sum(xi(:,35).*absbreak(:,35)) -  sum(xi(:,35).*L0G0break(:,35)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,35)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,35))) ) ...
+     - sum(xi(:,35))+SumL1L34 ;
+ 
+ 
+ fun15 = @(sortLLL1,sortLLL2) sum(xi(:,45).*absbreak(:,45)) -  sum(xi(:,45).*L0G0break(:,45)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,45)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,45))) ) ...
+     - sum(xi(:,45))+SumL1L35 ;
+
+ fun16 = @(sortLLL1,sortLLL2) sum(xi(:,55).*absbreak(:,55)) -  sum(xi(:,55).*L0G0break(:,55)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,55)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,55))) ) ...
+     - sum(xi(:,55))+SumL1L36 ;
+
+ 
+ fun17 = @(sortLLL1,sortLLL2) sum(xi(:,65).*absbreak(:,65)) -  sum(xi(:,65).*L0G0break(:,65)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,65)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,65))) ) ...
+     - sum(xi(:,65))+SumL1L37 ;
+
+ fun18 = @(sortLLL1,sortLLL2) sum(xi(:,75).*absbreak(:,75)) -  sum(xi(:,75).*L0G0break(:,75)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,75)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,75))) ) ...
+     - sum(xi(:,75))+SumL1L38 ;
+
+ fun19 = @(sortLLL1,sortLLL2) sum(xi(:,50).*absbreak(:,50)) -  sum(xi(:,50).*L0G0break(:,50)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,50)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,50))) ) ...
+     - sum(xi(:,50))+SumL1L39 ;
+ 
+fun20 = @(sortLLL1,sortLLL2) sum(xi(:,5).*absbreak(:,5)) -  sum(xi(:,5).*L0G0break(:,5)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,5)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,5))) ) ...
+     - sum(xi(:,5))+SumL1L40 ;
+
+ fun21 = @(sortLLL1,sortLLL2) sum(xi(:,10).*absbreak(:,10)) -  sum(xi(:,10).*L0G0break(:,10)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,10)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,10))) ) ...
+     - sum(xi(:,10))+SumL1L41 ;
+
+
+
+fun22 = @(sortLLL1,sortLLL2) sum(xi(:,40).*absbreak(:,40)) -  sum(xi(:,40).*L0G0break(:,40)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,40)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,40))) ) ...
+     - sum(xi(:,40))+SumL1L42 ;
+
+fun23 = @(sortLLL1,sortLLL2) sum(xi(:,39).*absbreak(:,39)) -  sum(xi(:,39).*L0G0break(:,39)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,39)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,39))) ) ...
+     - sum(xi(:,39))+SumL1L43 ;
+
+
+fun24 = @(sortLLL1,sortLLL2) sum(xi(:,41).*absbreak(:,41)) -  sum(xi(:,41).*L0G0break(:,41)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,41)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,41))) ) ...
+     - sum(xi(:,41))+SumL1L44 ;
+
+
+fun25 = @(sortLLL1,sortLLL2) sum(xi(:,49).*absbreak(:,49)) -  sum(xi(:,49).*L0G0break(:,49)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,49)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,49))) ) ...
+     - sum(xi(:,49))+SumL1L45 ;
+
+
+fun26 = @(sortLLL1,sortLLL2) sum(xi(:,1).*absbreak(:,1)) -  sum(xi(:,1).*L0G0break(:,1)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,1)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,1))) ) ...
+     - sum(xi(:,1))+SumL1L46 ;
+
+
+dlmwrite('LL2break43',bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43)),'delimiter','\t','precision',15);
+disp(size(breakpointsblockU(:,3).*xi(:,43)))
+disp(size(sortLLL2))
+dlmwrite('LL2break432', (breakpointsblockU(:,3).*xi(:,43))*sortLLL2,'delimiter','\t','precision',15);
+
+ %fun3d= zeros(length(sortLLL1),length(sortLLL1),length(breaksortLLL1));
+ 
+%  for k=0:5:100
+% 
+% for k=1:4
+%      for i=1:size(expL1G1,2)
+% for j=1:size(expL1G1,2)
+%  
+%     fun3d(i,j,k) =sum(xi(:,k).*absbreak(:,k)) -   bsxfun(@plus,(sum( bsxfun(@times,sortLLL1(i), breakpointsblockU(:,1).*xi(:,k)) ) ).',sum( bsxfun(@times,sortLLL2(j), breakpointsblockU(:,2).*xi(:,k))) ) ...
+%      - sum(xi(:,k))+ Sum3d(i,j,k);
+% 
+%  dlmwrite('sortLLL15',sortLLL1(5),'delimiter','\t','precision',15);
+%  dlmwrite('fun3d',fun3d,'delimiter','\t','precision',15);
+% 
+% end
+%      end
+%      end
+%  end
+ 
+ 
+
+ 
+ ZZFE=bsxfun(funFE,sortLLL1,sortLLL2);
+
+  ZZ=bsxfun(fun1,sortLLL1,sortLLL2);
+  
+  ZZt1=bsxfun(funt1,sortLLL1,sortLLL2);
+  
+  ZZt2=bsxfun(funt2,sortLLL1,sortLLL2);
+%   
+  
+  %ZZ=bsxfun(fun1,sortLLL0,sortLLL1);
+ 
+   ZZ1=bsxfun(fun2,sortLLL1,sortLLL2);
+   
+     ZZ2=bsxfun(fun3,sortLLL1,sortLLL2);
+     
+       ZZ3=bsxfun(fun4,sortLLL1,sortLLL2);
+       
+         ZZ4=bsxfun(fun5,sortLLL1,sortLLL2);
+ 
+          ZZ5=bsxfun(fun6,sortLLL1,sortLLL2);
+       
+         ZZ6=bsxfun(fun7,sortLLL1,sortLLL2);
+         
+           ZZ7=bsxfun(fun8,sortLLL1,sortLLL2);
+ 
+          ZZ8=bsxfun(fun9,sortLLL1,sortLLL2);
+       
+         ZZ9=bsxfun(fun10,sortLLL1,sortLLL2);
+         
+            ZZ10=bsxfun(fun11,sortLLL1,sortLLL2);
+ 
+          ZZ11=bsxfun(fun12,sortLLL1,sortLLL2);
+
+          
+               ZZ12=bsxfun(fun13,sortLLL1,sortLLL2);
+ 
+          ZZ13=bsxfun(fun14,sortLLL1,sortLLL2);
+
+          ZZ14=bsxfun(fun15,sortLLL1,sortLLL2);
+ 
+          ZZ15=bsxfun(fun16,sortLLL1,sortLLL2);
+
+          
+               ZZ16=bsxfun(fun17,sortLLL1,sortLLL2);
+ 
+          ZZ17=bsxfun(fun18,sortLLL1,sortLLL2);
+           
+          ZZ18=bsxfun(fun19,sortLLL1,sortLLL2);
+ 
+          ZZ19=bsxfun(fun20,sortLLL1,sortLLL2);
+
+ ZZ20=bsxfun(fun21,sortLLL1,sortLLL2);
+ 
+ 
+ZZ21=bsxfun(fun22,sortLLL1,sortLLL2);
+
+ ZZ22=bsxfun(fun23,sortLLL1,sortLLL2);
+ 
+ 
+ZZ23=bsxfun(fun24,sortLLL1,sortLLL2);
+
+ZZ24=bsxfun(fun25,sortLLL1,sortLLL2);
+
+ZZ25=bsxfun(fun26,sortLLL1,sortLLL2);
+
+ dlmwrite('SumL1L21',SumL1L21,'delimiter','\t','precision',15);
+
+ dlmwrite('min',([ min(min(ZZ25)) min(min(ZZ19)) min(min(ZZ20)) min(min(ZZ2)) min(min(ZZ10))  min(min(ZZ12))  min(min(ZZ5)) min(min(ZZ13))    min(min(ZZ22))    min(min(ZZ21))  min(min(ZZ23))      min(min(ZZ14))  min(min(ZZ24)) min(min(ZZ18)) min(min(ZZ15)) min(min(ZZ4))  min(min(ZZ16))  min(min(ZZ11))  min(min(ZZ17))   min(min(ZZ1))   min(min(ZZ3)) min(min(ZZ6)) min(min(ZZ7)) min(min(ZZ8)) min(min(ZZ9))  ])','delimiter','\t','precision',15);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ for i=1:size(expL1G1,2)
+for j=1:size(expL1G1,2)
+   ZMinL1L23(i,j)=min([ZZ1(i,j) ZZ2(i,j) ZZ3(i,j) ZZ18(i,j) ZZ19(i,j) ZZ4(i,j) ZZ5(i,j) ZZ6(i,j) ZZ7(i,j) ZZ8(i,j) ZZ9(i,j) ZZ10(i,j) ZZ11(i,j) ZZ12(i,j) ZZ13(i,j) ZZ14(i,j) ZZ15(i,j) ZZ16(i,j) ZZ17(i,j) ZZ20(i,j) ZZ21(i,j)   ZZ22(i,j)  ZZ23(i,j)  ZZ24(i,j) ZZ25(i,j) ]);
+%ZMinL1L23(i,j)=min([ZZ1(i,j) ZZ2(i,j)]);
+end
+ end
+    
+dlmwrite('ZZMatrix',ZMinL1L23,'delimiter','\t','precision',15);
+          
+ dlmwrite('ZZt1',ZZt1,'delimiter','\t','precision',15);
+ 
+ dlmwrite('ZZt2',ZZt2,'delimiter','\t','precision',15);
+ 
+ 
+  dlmwrite('ZZFE',ZZFE,'delimiter','\t','precision',15);
+
+dlmwrite('ZZ',ZZ,'delimiter','\t','precision',15);
+
+dlmwrite('ZZ1',ZZ1,'delimiter','\t','precision',15);
+
+ dlmwrite('ZZ4',ZZ4,'delimiter','\t','precision',15);
+
+
+ dlmwrite('ZZ5',ZZ5,'delimiter','\t','precision',15);
+ 
+ dlmwrite('ZZ6',ZZ6,'delimiter','\t','precision',15);
+ 
+  dlmwrite('ZZ9',ZZ9,'delimiter','\t','precision',15);
+  
+   dlmwrite('ZZ8',ZZ8,'delimiter','\t','precision',15);
+   
+   dlmwrite('ZZ12',ZZ12,'delimiter','\t','precision',15);
+   
+   
+     dlmwrite('ZZ15',ZZ15,'delimiter','\t','precision',15);
+   
+          dlmwrite('ZZ16',ZZ16,'delimiter','\t','precision',15);
+     
+   dlmwrite('ZZ18',ZZ18,'delimiter','\t','precision',15);
+   
+      dlmwrite('ZZ19',ZZ19,'delimiter','\t','precision',15);
+      
+      dlmwrite('ZZ20',ZZ20,'delimiter','\t','precision',15);
+         
+ dlmwrite('ZMinL1L23',ZMinL1L23,'delimiter','\t','precision',15);
+ 
+ fun = @(sortLLL1,sortLLL2) fun2;
+ 
+
+ 
+%  SumL1L23zf = zeros(100,100,118);
+% 
+% 
+% for k=1:5
+% for i=1:size(expL1G1,2)
+% for j=1:size(expL1G1,2)
+%     
+%       expL0G0breakzf=exp(L0G0break(:,k))  ;
+%    SumL1L23zf(i,j,k)=sum((expL1G1(:,i)).*(expL0G0breakzf.*expL2G2(:,j)));
+%     end
+% end
+% end
+% zf=1
+%     for sortLLL1o=-15:15
+%        
+%          for sortLLL2o=-10:5
+%  f(sortLLL1o,sortLLL2o,zf)= sum(xi(:,zf).*absbreak(:,zf)) -  sum(xi(:,zf).*L0G0break(:,zf)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1o, breakpointsblockU(:,2).*xi(:,zf)) ) ).',sum( bsxfun(@times,sortLLL2o, breakpointsblockU(:,3).*xi(:,zf))) ) ...
+%      - sum(xi(:,zf))+SumL1L23zf
+%          end
+%     end
+
+% i1=linspace(1,size(expL1G1,2),size(expL1G1,2)) ;
+% i2=linspace(1,size(expL1G1,2),size(expL1G1,2)) ;
+% i3=linspace(1,4,size(expL1G1,2));
+% scatter3(i1,i2,i3,40,fun3d,'filled')
+ 
+ 
+%fun = @(sortLLL1,sortLLL2)  bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,1)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,1))) )
+
+    
+    fun0=@(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) 
+  
+    fun00= @(sortLLL1,sortLLL2)- sum(xi(:,43)) + sum(exp(L0G0break(:,43)))+ bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ))
+    
+    dlmwrite('sumxixi0',- sum(xi(:,43)) + sum(exp(L0G0break(:,43))),'delimiter','\t','precision',15); 
+    
+    dlmwrite('sumxixi01',- sum(xi(:,43)),'delimiter','\t','precision',15); 
+    dlmwrite('sumxixi02', exp(L0G0break(:,43)),'delimiter','\t','precision',15); 
+    
+    
+ 
+    
+    dlmwrite('sumxixiT',bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) )),'delimiter','\t','precision',15); 
+    
+    dlmwrite('sumxixiTS1',(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
+    
+    dlmwrite('sumxixiT1',(( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
+    
+    dlmwrite('sumxixiTS2',(sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3) )) )),'delimiter','\t','precision',15); 
+    
+    dlmwrite('sumxixiT2', (( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3) )) )),'delimiter','\t','precision',15);
+    
+    
+    ZZ0=bsxfun(fun0,sortLLL1,sortLLL2);
+    
+    ZZ00=bsxfun(fun00,sortLLL1,sortLLL2);
+    
+    dlmwrite('ZZ0',ZZ0,'delimiter','\t','precision',15); 
+    dlmwrite('ZZ00',ZZ00,'delimiter','\t','precision',15); 
+    
+    Z000=bsxfun(@plus,FreeE1.',FreeE2);
+    dlmwrite('ZZ000',bsxfun(@plus,FreeE1.',FreeE2),'delimiter','\t','precision',15); 
+    
+ %fun = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) ...
+ %  - sum(xi(:,43)) + exp(sum(L0G0break(:,43)) + bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ))
+ 
+ dlmwrite('sumxixiT12', sum(L0G0break(:,43)) + bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ),'delimiter','\t','precision',15);
+ 
+ dlmwrite('sumxixiexpT12', exp(sum(L0G0break(:,43)) + bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) )),'delimiter','\t','precision',15);
+dlmwrite('sumx43',xi(:,43),'delimiter','\t','precision',15);
+
+%   fun = @(sortLLL1,sortLLL2) (sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,((sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))) - sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',(sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43) )) ...
+%       - sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ) ) ) ...
+%     - sum(xi(:,43)) + sum(exp(L0G0break(:,43))))
+ 
+
+
+
+ %fun = @(sortLLL1,sortLLL2)bsxfun(@plus,sortLLL1.',sortLLL2)
+ 
+ %+  sum(exp(L0G0break(:,21) +(bsxfun(@times,sortLLL1',breakpointsblockU(:,2)))  +  (bsxfun(@times,sortLLL2',breakpointsblockU(:,3)) ) )  )
+ 
+ 
+ 
+    dlmwrite('ZZ',ZZ,'delimiter','\t','precision',15); 
+     disp(size(ZZ))
+   
+
+
+
+     
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+%      figure;
+% hold all;
+
+
+
+
+ [r,the]=meshgrid([0:0.1:5],[0:pi/10:2*pi]);
+ x1=r.*cos(the);
+ y1=r.*sin(the);
+ z=x1.^2+y1.^2;
+
+disp(size(x1))
+dpsortLLL1=[linspace(17,0,50) linspace(-0.1,-16,50)] ;
+ 
+ dpsortLLL2=[linspace(7,-5,50) linspace(-4.5,7,50)];
+
+   dpexpL1G1=exp(bsxfun(@times,dpsortLLL1, breakpointsblockU(:,2) ));
+dpexpL2G2=exp(bsxfun(@times,dpsortLLL2, breakpointsblockU(:,3) ));  
+
+for i=1:100
+for j=1:100
+   SumL1L24h(i,j)=sum((dpexpL1G1(:,i)).*(expL0G0break1.*dpexpL2G2(:,j)));
+end
+end
+
+
+
+fun4h =@(dpsortLLL1,dpsortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,dpsortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,dpsortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) ...
+     - sum(xi(:,43))+SumL1L24h ;
+
+ dpZZ=bsxfun(fun4h,dpsortLLL1,dpsortLLL2); 
+ 
+ P1 = [7,17,dpZZ(7,17)];
+P2 = [-5,0,2];
+ pts = [P1; P2];
+
+ x2=-10:.1:10;
+[X2,Y2] = meshgrid(x2);
+%b=0.0; a=-0.5; c=0.12; d=2;
+
+%b=-0.4; a=-(8.5); c=1; d=-(-6 - a*(-5));
+
+
+%b=1.4; a=-(8.5); c=1; d=-(3 - a*(-5));
+
+
+%b=2.5; a=-(9.8); c=1; d=-(3 - a*(-5));
+
+
+
+%b=2.4; a=-(9.7); c=1; d=-(3 - a*(-5));
+
+b=2.4; a=-(9.9); c=1; d=-(4 - a*(-5));
+
+%b=2; a=-(9.4); c=1; d=-(4 - a*(-5));
+
+
+
+%b=3; a=-(14); c=1; d=-(20 - a*(-5));
+
+%b=0.5; a=-(8.5); c=1; d=-(3 - a*(-5));
+
+%b=4; a=-(8.5); c=1; d=-(0.9 - a*(-5));
+
+%b=4; a=-(8); c=1; d=-(-22 - a*(-5));
+
+
+%a=0; b=0; c=4; d=-1;
+funxy =@(sortLLL1,sortLLL2) (d-bsxfun(@plus,(a*sortLLL1)'.',-(b *sortLLL2)' ) )/c
+%Zxy=(d- a * X2 - b * Y2)/c;
+
+
+
+
+%hold on;
+
+
+
+
+
+Zxy=bsxfun(funxy,sortLLL2,sortLLL1);
+
+ %hold on
+s=surf(sortLLL2,sortLLL1,Zxy,'edgecolor','none')
+%hold off
+
+ %plot3(dpsortLLL2,dpsortLLL1,dpZZ,'LineWidth',0.7)
+ %plot3(pts(:,1), pts(:,2), pts(:,3))
+ 
+ 
+ s1=surf(sortLLL2,sortLLL1,ZZ15,'edgecolor','none')
+ 
+%  nContour = 60 ;
+%  
+% 
+%  shading interp;
+% colormap( parula(nContour+1) );
+% 
+% 
+%  
+%   [C,h] =contour3(sortLLL2,sortLLL1,ZZ,60,'k', 'LineWidth', 3)
+  
+
+ contourf(sortLLL2,sortLLL1,ZMinL1L23,450)
+
+%contourf(sortLLL2,sortLLL1,ZZ1,450)
+
+%contourf(breaksortLLL2,breaksortLLL1,(bsxfun(@plus,FreeE1.',FreeE2))',80,'edgecolor','none')
+
+
+
+%surf(breaksortLLL2,breaksortLLL1,(bsxfun(@plus,FreeE1.',FreeE2))','edgecolor','none')
+
+
+%contourf(columntime,columntime,(bsxfun(@plus,FreeE1.',FreeE2))',30)
+
+
+
+
+%set(gca, 'yticklabel', {'16.5','5.3','-0.41','-5.2','-8.4','-10.9','-12.8','-14.3','-15.4','-16.2'} )
+
+
+% set(gca, 'yticklabel', {'-16.5','-5.3','0.41','5.2','8.4','10.9','12.8','14.3','15.4','16.2'} )
+% 
+% set(gca, 'xticklabel', {'1.0','-5.0','-4.3','-2.2','-0.24','1.5','3.0','4.2','5.0'} )
+
+
+%set(gca, 'xticklabel', {'10.0',,,,'-5',,'-2',,'-5'} )
+
+%contourf(sortLLL2,sortLLL1,ZZ13,160)
+
+
+
+
+
+  %contourf(sortLLL2,sortLLL1,ZZ,70)
+  
+  
+  
+  
+%s1=surf(sortLLL2,sortLLL1,ZZ,'edgecolor','none')
+
+% s6=surf(sortLLL2,sortLLL1,ZZ4,'edgecolor','none')
+% 
+% s7=surf(sortLLL2,sortLLL1,ZZ17,'edgecolor','none')
+
+
+
+
+% alpha(s,0.0)
+% 
+% alpha(s1,0.0)
+
+
+
+
+
+%view(3); camlight; axis vis3d
+
+% Take the difference between the two surface heights and find the contour
+
+% where that surface is zero.
+
+zdiff = ZZ15 - Zxy;
+
+C = contours(sortLLL2,sortLLL1 , zdiff, [0 0]);
+
+% Extract the x- and y-locations from the contour matrix C.
+
+xL = C(1, 2:end);
+
+yL = C(2, 2:end);
+
+% Interpolate on the first surface to find z-locations for the intersection
+
+% line.
+
+zL = interp2(sortLLL2,sortLLL1 , ZZ15, xL, yL);
+
+% Visualize the line.
+
+line(xL, yL, zL, 'Color', 'k', 'LineWidth', 3);
+% 
+% 
+
+
+
+
+
+
+
+
+%surf(theta,rho,ZZ)
+%fsurf(fun1,[-8 0 -2 10])
+
+
+%set(gca,'dataaspectratio',[1 1 0.5],'projection','perspective','box','on') 
+
+
+set(gca,'FontSize',24)
+
+% set(gca,'ylabel',flipud(get(gca,'ylabel')),'box','on')
+
+ ylabel('\lambda_{1T} \rightarrow ','fontsize',24,'fontweight','bold','color',[0 0 0])
+
+xlabel('\lambda_{2T}  \rightarrow ','fontsize',24,'fontweight','bold','color',[0 0 0])
+
+%   ylabel('\lambda_{1} (t) ','fontsize',10,'fontweight','bold','color',[0 0 0])
+% % 
+%  xlabel('\lambda_{2}  (t)','fontsize',10,'fontweight','bold','color',[0 0 0])
+
+
+
+%   ylabh = get(gca,'YLabel');
+% set(ylabh,'Position',get(ylabh,'Position') + [0.0 0 0.01])
+% xlabel('\leftarrow \lambda_{2}','fontsize',10,'fontweight','bold','color',[0 0 0],'rotation',210)
+% ylabel('\leftarrow \lambda_{1}','fontsize',10,'fontweight','bold','color',[0 0 0],'rotation',-30)
+
+%  zlabel('Free Energy','fontsize',10,'fontweight','bold','color',[0 0 0])
+% 
+% 
+% h = rotate3d;
+% set(h,'ActionPostCallback',@align_axislabel)
+
+
+
+
+%   xlabel('$$ \lambda_{2} \rightarrow$$','Interpreter','latex')
+%  
+%  ylabel('$$ \lambda_{1} \rightarrow$$','Interpreter','latex')
+
+
+
+
+
+
+   %contourf(sortLLL1,sortLLL0,ZZ,50)
+    
+
+
+
+%  surf(breaksortLLL1,breaksortLLL2,bsxfun(@plus,FreeE1.',FreeE2),'edgecolor','none')
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+    
+%   
+  % contourf(columntime,columntime,ZZ,30)
+  
+  %contourf(sortLLL1,sortLLL2,ZZ,60,'edgecolor','none')
+  
+ 
+ % surf(columntime,columntime,ZZ,'edgecolor','none')
+     
+     disp(size(breakpointsblockU(:,2)))
+      disp(size((sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))))) 
+ 
+      disp(size(L0G0break))
+      
+  %     contourf(xx,yy,ZZ)
+     
+%contourf(sortL1AvgG1(:,3),sortL2AvgG2(:,3),bsxfun(@plus,FreeE1.',FreeE2))
+
+
+%contourf(sortLLL1,sortLLL2,bsxfun(@plus,FreeE1.',FreeE2))
+
+
+%contourf(sortAvgG1,sortAvgG2,bsxfun(@plus,FreeE1.',FreeE2),25)
+
+%contourf(bsxfun(@plus,(FreeE1).',FreeE2),30)
+
+
+%surf(sortLLL1,sortLLL2,bsxfun(@plus,FreeE1.',FreeE2),'edgecolor','none')
+
+
+%surf(columntime,columntime,bsxfun(@plus,FreeE1.',FreeE2))
+
+
+%contourf(bsxfun(@plus,FreeE1.',FreeE2),'edgecolor','none')
+
+%contourf(columntime,columntime,bsxfun(@plus,FreeE1.',FreeE2),30)
+
+% L1L2=[sortLLL1 sortLLL2]
+% 
+% data=[L1L2 FreeEF]
+% 
+% plot3(data(:,1), data(:,2), data(:,3)), xlabel('x'), ylabel('y'), zlabel('Free energy')
+
+
+% 
+
+
+%set(gca, 'yticklabel', {'16.5','5.3','-0.41','-5.2','-8.4','-10.9','-12.8','-14.3','-15.4','-16.2'} )
+
+
+%set(gca, 'yticklabel', {'16.5','5.3','-0.41','-5.2','-8.4','-10.9','-12.8','-14.3','-15.4','-16.2'} )
+
+%set(gca, 'yticklabel', {'-18','-7','5','16'} )
+%set(gca, 'yticklabel', {'-6.5','-8','-9.5','-11','-12.5','-14','-15.5','-17','-18.5','-20'} )
+
+
+%set(gca, 'yticklabel', {'6.5','8','9.5','11','12.5','14','15.5','17','18.5','20'} )
+
+%set(gca, 'yticklabel', {'16.5','5.3','-0.41','-5.2','-8.4','-10.9','-12.8','-14.3','-15.4','-16.2'} )
+ 
+ % set(gca, 'xticklabel', {'-5','-2.9','-0.7','1.4','3.6','5.7','7.8','10'})
+
+%set(gca, 'xticklabel', {'-16.5','-5.3','0.41','5.2','8.4','10.9','12.8','14.3','15.4','16.2'} )
+
+
+
+%set(gca, 'yticklabel', {'-1.0','5.0','4.3','2.2','0.24','-1.5','-3.0','-4.2','-5.0','-5.7'} )
+
+%set(gca, 'yticklabel', {'10.0','-5','-2','-5'} )
+
+%set(gca,'XTick',double(LLL1))
+
+
+
+
+
+
+%ylabel('$$\leftarrow \lambda_{1} $$','Interpreter','latex');
+%ylabel('$$\lambda_{1} \rightarrow$$','Interpreter','latex');
+%xlabel('$$\lambda_{2} \rightarrow  $$','Interpreter','latex');
+
+%  ylabel('$$\lambda_{1} \rightarrow$$','Interpreter','latex');
+%  xlabel('$$\lambda_{0} \rightarrow  $$','Interpreter','latex');
+
+
+
+
+
+% set(gca,'XTickLabel',str2mat(''))
+% set(gca,'YTickLabel',str2mat(''))
+%unset(gca,'XTickLabel')
+
+
+% Sx = 1:8;
+% Sy = 1:8;
+% Sz = 1:8;
+% 
+% x=LLL1
+% 
+% y=LLL2
+% 
+% z=bsxfun(@plus,FreeE1.',FreeE2)
+% 
+% 
+% [X,Y,Z] = meshgrid(x,y,z);
+% 
+% 
+% V = X.*exp(-X.^2-Y.^2-Z.^2);
+% 
+% 
+% cvals = linspace(-8,2,10);
+% 
+% 
+% contourslice(X,Y,Z,V,Sx,Sy,Sz,cvals)
+
+
+dlmwrite('FreeE1.txt',FreeE1,'delimiter','\t','precision',15);
+
+dlmwrite('FreeE2.txt',FreeE2,'delimiter','\t','precision',15);
+
+dlmwrite('FreeEF.txt',FreeEF,'delimiter','\t','precision',15);
+
+dlmwrite('FreeE12.txt',bsxfun(@plus,FreeE1.',FreeE2),'delimiter','\t','precision',15);
+
+
+
+
+% + LG4ProcessPbreak(1:25,1:118)   + LG5ProcessPbreak(1:25,1:118)     + LG6ProcessPbreak(1:25,1:118)  + LG7ProcessPbreak(1:25,1:118)  
+
+
+%hmo = HeatMap((  flipud(  LG1ProcessPbreak(1:25,1:118)  +LG2ProcessPbreak(1:25,1:118)  + LG3ProcessPbreak(1:25,1:118)     ) ),'RowLabels',flipud(AA(1:25)),'ColumnLabels',AAA(1:118),'Colormap',colormap(flipud(colormap(map))) );
+
+
+
+
+%hmo = HeatMap((  flipud(  LG1ProcessPbreak(1:25,1:118)  +LG2ProcessPbreak(1:25,1:118)  + LG3ProcessPbreak(1:25,1:118)       ) ),'RowLabels',flipud(AA(1:25)),'ColumnLabels',AAA(1:118),'Colormap',colormap(flipud(colormap(map))) );
+
+
+
+
+
+
+
+
+%hmo = HeatMap((  flipud( LG123Pbreak(1:102,1:102) ) ),'RowLabels',flipud(AA(1:102)),'ColumnLabels',AAA(1:102),'Colormap',colormap(flipud(colormap(map))) );
+
+%plot(hmo);
+caxis([-0.3 0.3])
+colorbar
+
+%hmo = HeatMap(( LG123Pbreak(1:102,1:102) ),'RowLabels',AA(1:102),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
+
+
+
+
+
+
+%hmo = HeatMap(exp( LG1Pbreak(1:34,1:102)),'RowLabels',AA(1:34),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
+
+
+
+
+%hmo = HeatMap(( LG1Pbreak(1:34,1:102)),'RowLabels',AA(1:34),'ColumnLabels',AAA(1:102),'Colormap',colormap(map));
+ 
+
+
+
+%hmo = HeatMap(exp( LG1Pbreak(1:34,1:102)),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
+ 
+
+
+
+
+
+
+
+
+%hmo = HeatMap(exp(LG1Pbreak(1:34,1:102) ),'Colormap',colormap(map) );
