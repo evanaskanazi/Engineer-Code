@@ -1,0 +1,172 @@
+
+% 
+% oX=L120minMetab25aMean;
+
+%load 'LL1andLL2andXmean';
+
+
+
+%oX=LL1andLL2andXmean;
+
+
+
+load 'L120minMetab25';
+
+
+
+oX=L120minMetab25;
+
+
+%load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+
+
+%oX=Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+X=(oX);
+
+Xrand = [randn(100,2)*0.75+ones(100,2);
+    randn(100,2)*0.5-ones(100,2)];
+
+ dlmwrite('Xrand',Xrand,'delimiter','\t','precision',15);
+%   dlmwrite('Xmeanp',(mean(oX))','delimiter','\t','precision',15);
+%   
+%   dlmwrite('Xmean',(mean(oX)),'delimiter','\t','precision',15);
+
+
+opts = statset('Display','final');
+which kmeans  ;
+
+
+ idx2 = kmeans(X,2,'Distance','sqeuclidean');
+[idx3,C] = kmeans(X,3,'Distance','sqeuclidean') ;
+  idx4 = kmeans(X,4,'Distance','sqeuclidean');
+
+  dlmwrite('FitCluster',C,'delimiter','\t','precision',15);
+  
+  dlmwrite('Fitidx',idx3,'delimiter','\t','precision',15);
+  
+idx5 = kmeans(X,5,'Distance','sqeuclidean');
+idx6 = kmeans(X,6,'Distance','sqeuclidean');
+idx7 = kmeans(X,7,'Distance','sqeuclidean');
+idx8 = kmeans(X,8,'Distance','sqeuclidean');
+idx9 = kmeans(X,9,'Distance','sqeuclidean');
+idx10 = kmeans(X,10,'Distance','sqeuclidean');
+idx11 = kmeans(X,11,'Distance','sqeuclidean');
+idx12 = kmeans(X,12,'Distance','sqeuclidean');
+idx13 = kmeans(X,13,'Distance','sqeuclidean');
+idx14 = kmeans(X,14,'Distance','sqeuclidean');
+idx15 = kmeans(X,15,'Distance','sqeuclidean');
+idx16 = kmeans(X,16,'Distance','sqeuclidean');
+idx17 = kmeans(X,17,'Distance','sqeuclidean');
+idx18 = kmeans(X,18,'Distance','sqeuclidean');
+idx19 = kmeans(X,19,'Distance','sqeuclidean');
+idx20 = kmeans(X,20,'Distance','sqeuclidean');
+idx21 = kmeans(X,21,'Distance','sqeuclidean');
+idx22 = kmeans(X,22,'Distance','sqeuclidean');
+idx23 = kmeans(X,23,'Distance','sqeuclidean');
+idx24 = kmeans(X,24,'Distance','sqeuclidean');
+idx25 = kmeans(X,25,'Distance','sqeuclidean');
+% idx26 = kmeans(X,26,'Distance','sqeuclidean');
+% idx27 = kmeans(X,27,'Distance','sqeuclidean');
+% idx28 = kmeans(X,28,'Distance','sqeuclidean');
+% idx29 = kmeans(X,29,'Distance','sqeuclidean');
+% idx30 = kmeans(X,30,'Distance','sqeuclidean');
+% idx31 = kmeans(X,31,'Distance','sqeuclidean');
+% idx32 = kmeans(X,32,'Distance','sqeuclidean');
+% idx33 = kmeans(X,33,'Distance','sqeuclidean');
+% idx34 = kmeans(X,34,'Distance','sqeuclidean');
+% idx40 = kmeans(X,40,'Distance','sqeuclidean');
+
+figure
+[silh2,h] = silhouette(X,idx2,'sqeuclidean');
+[silh3,h] = silhouette(X,idx3,'sqeuclidean');
+[silh4,h] = silhouette(X,idx4,'sqeuclidean');
+[silh5,h] = silhouette(X,idx5,'sqeuclidean');
+[silh6,h] = silhouette(X,idx6,'sqeuclidean');
+[silh7,h] = silhouette(X,idx7,'sqeuclidean');
+[silh8,h] = silhouette(X,idx8,'sqeuclidean');
+[silh9,h] = silhouette(X,idx9,'sqeuclidean');
+[silh10,h] = silhouette(X,idx10,'sqeuclidean');
+[silh11,h] = silhouette(X,idx11,'sqeuclidean');
+[silh12,h] = silhouette(X,idx12,'sqeuclidean');
+[silh13,h] = silhouette(X,idx13,'sqeuclidean');
+[silh14,h] = silhouette(X,idx14,'sqeuclidean');
+[silh15,h] = silhouette(X,idx15,'sqeuclidean');
+[silh16,h] = silhouette(X,idx16,'sqeuclidean');
+[silh17,h] = silhouette(X,idx17,'sqeuclidean');
+[silh18,h] = silhouette(X,idx18,'sqeuclidean');
+[silh19,h] = silhouette(X,idx19,'sqeuclidean');
+[silh20,h] = silhouette(X,idx20,'sqeuclidean');
+[silh21,h] = silhouette(X,idx21,'sqeuclidean');
+[silh22,h] = silhouette(X,idx22,'sqeuclidean');
+[silh23,h] = silhouette(X,idx23,'sqeuclidean');
+[silh24,h] = silhouette(X,idx24,'sqeuclidean');
+[silh25,h] = silhouette(X,idx25,'sqeuclidean');
+% [silh26,h] = silhouette(X,idx26,'sqeuclidean');
+% [silh27,h] = silhouette(X,idx27,'sqeuclidean');
+% [silh28,h] = silhouette(X,idx28,'sqeuclidean');
+% [silh29,h] = silhouette(X,idx29,'sqeuclidean');
+% [silh30,h] = silhouette(X,idx30,'sqeuclidean');
+% [silh31,h] = silhouette(X,idx31,'sqeuclidean');
+% [silh32,h] = silhouette(X,idx32,'sqeuclidean');
+% [silh33,h] = silhouette(X,idx33,'sqeuclidean');
+% [silh34,h] = silhouette(X,idx34,'sqeuclidean');
+
+%[silh40,h] = silhouette(X,idx40,'sqeuclidean');
+
+cluster2 = mean(silh2)
+cluster3 = mean(silh3)
+cluster4 = mean(silh4)
+cluster5 = mean(silh5)
+cluster6 = mean(silh6)
+cluster7 = mean(silh7)
+cluster8 = mean(silh8)
+cluster9 = mean(silh9)
+cluster10 = mean(silh10)
+cluster11 = mean(silh11)
+cluster12 = mean(silh12)
+cluster13 = mean(silh13)
+cluster14 = mean(silh14)
+cluster15 = mean(silh15)
+cluster16 = mean(silh16)
+cluster17 = mean(silh17)
+cluster18 = mean(silh18)
+cluster19 = mean(silh19)
+cluster20 = mean(silh20)
+cluster21 = mean(silh21)
+cluster22 = mean(silh22)
+cluster23 = mean(silh23)
+cluster24 = mean(silh24)
+cluster25 = mean(silh25)
+% cluster26 = mean(silh26)
+% cluster27 = mean(silh27)
+% cluster28 = mean(silh28)
+% cluster29 = mean(silh29)
+% cluster30 = mean(silh30)
+% cluster31 = mean(silh31)
+% cluster32 = mean(silh32)
+% cluster33 = mean(silh33)
+% cluster34 = mean(silh34)
+% cluster40 = mean(silh40)
+
+
+figure;
+plot(X(idx3==1,12),X(idx3==1,36),'r.','MarkerSize',12)
+hold on
+plot(X(idx3==2,12),X(idx3==2,36),'b.','MarkerSize',12)
+plot(X(idx3==3,12),X(idx3==3,36),'m.','MarkerSize',12)
+
+plot(C(:,12),C(:,36),'kx',...
+     'MarkerSize',15,'LineWidth',3)
+legend('Cluster 1','Cluster 2','Cluster 3','Centroids',...
+       'Location','NW')
+title 'Cluster Assignments and Centroids'
+ ylabel('1 Hours','fontsize',16,'fontweight','bold','color',[0 0 0])
+
+xlabel('-1 Hours','fontsize',16,'fontweight','bold','color',[0 0 0])
+hold off
+
+%h = gca;
+%h.Children.EdgeColor = [.6 .6 1];
+%xlabel 'Silhouette Value'
+%ylabel 'Cluster'
