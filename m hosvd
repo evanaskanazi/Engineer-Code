@@ -49,6 +49,8 @@ dlmwrite('nLL1breaks.txt',-Lambdafinebreaks(:,2),'delimiter','\t','precision',15
 
 dlmwrite('LL1breaks.txt',Lambdafinebreaks(:,2),'delimiter','\t','precision',15);
 
+dlmwrite('nLL2breaks.txt',-Lambdafinebreaks(:,3),'delimiter','\t','precision',15);
+
 dlmwrite('LL2breaks.txt',Lambdafinebreaks(:,3),'delimiter','\t','precision',15);
 
 dlmwrite('nLL3breaks.txt',-Lambdafinebreaks(:,4),'delimiter','\t','precision',15);
