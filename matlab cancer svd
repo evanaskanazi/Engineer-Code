@@ -1,0 +1,769 @@
+load 'CancerGSMd';
+
+load 'CancerGSMLymph';
+
+load 'CancerGSMBladder';
+
+load 'CancerGSMallminusLymph';
+
+load 'CancerGSMallminusLymphaBladder';
+
+YCancerGSMd=((log(CancerGSMd)));
+
+YCancerGSMLymph=((log(CancerGSMLymph)));
+
+YCancerGSMBladder=((log(CancerGSMBladder)));
+
+YCancerGSMallminusLymph=((log(CancerGSMallminusLymph)));
+
+YCancerGSMallminusLymphaBladder=((log(CancerGSMallminusLymphaBladder)));
+
+
+
+YCancerGSMdstd = std(YCancerGSMd,0,2) ;
+
+disp(size(YCancerGSMdstd));
+
+
+YCancerGSMLymphstd = std(YCancerGSMLymph,0,2) ;
+
+
+YCancerGSMBladderstd = std(YCancerGSMBladder,0,2) ;
+
+YCancerGSMallminusLymphstd = std(YCancerGSMallminusLymph,0,2) ;
+
+YCancerGSMallminusLymphaBladderstd = std(YCancerGSMallminusLymphaBladder,0,2) ;
+
+
+
+YCancerGSMdstdsort=sort(YCancerGSMdstd);
+
+dlmwrite('YCancerGSMdstdsort.txt',YCancerGSMdstdsort(:,1),'delimiter','\t','precision',15);
+
+
+
+YCancerGSMLymphstdsort=sort(YCancerGSMLymphstd);
+
+dlmwrite('YCancerGSMLymphstdsort.txt',YCancerGSMLymphstdsort(:,1),'delimiter','\t','precision',15);
+
+
+YCancerGSMBladderstdsort=sort(YCancerGSMBladderstd);
+
+dlmwrite('YCancerGSMBladderstdsort.txt',YCancerGSMBladderstdsort(:,1),'delimiter','\t','precision',15);
+
+
+YCancerGSMallminusLymphstdsort=sort(YCancerGSMallminusLymphstd);
+
+dlmwrite('YCancerGSMallminusLymphstdsort.txt',YCancerGSMallminusLymphstdsort(:,1),'delimiter','\t','precision',15);
+
+
+
+YCancerGSMallminusLymphaBladderstdsort=sort(YCancerGSMallminusLymphaBladderstd);
+
+dlmwrite('YCancerGSMallminusLymphaBladderstdsort.txt',YCancerGSMallminusLymphaBladderstdsort(:,1),'delimiter','\t','precision',15);
+
+
+
+disp(size(YCancerGSMdstdsort));
+
+GSMdmeanerr=(size(YCancerGSMd,1))^0.5*mean(YCancerGSMdstdsort([1:200],:));
+
+GSMdmeanerrs1=size(YCancerGSMd,1)
+
+dlmwrite('GSMdmeanerrvec.txt',YCancerGSMdstdsort([1:200],:),'delimiter','\t','precision',15);
+
+dlmwrite('GSMdmeanerr.txt',mean(YCancerGSMdstdsort([1:200],:)),'delimiter','\t','precision',15);
+
+
+GSMLymphmeanerr=(size(YCancerGSMLymph,1))^0.5*mean(YCancerGSMLymphstdsort([1:200],:));
+
+GSMBladdermeanerr=(size(YCancerGSMBladder,1))^0.5*mean(YCancerGSMBladderstdsort([1:200],:));
+
+
+GSMallminusLymphmeanerr=(size(YCancerGSMallminusLymph,1))^0.5*mean(YCancerGSMallminusLymphstdsort([1:200],:));
+
+GSMallminusLymphaBladdermeanerr=(size(YCancerGSMallminusLymphaBladder,1))^0.5*mean(YCancerGSMallminusLymphaBladderstdsort([1:200],:));
+
+
+
+
+
+
+
+
+ [uCancerGSMd,sCancerGSMd,vCancerGSMd]=svd(YCancerGSMd);
+ 
+ [uCancerGSMLymph,sCancerGSMLymph,vCancerGSMLymph]=svd(YCancerGSMLymph);
+
+ [uCancerGSMBladder,sCancerGSMBladder,vCancerGSMBladder]=svd(YCancerGSMBladder);
+
+
+ [uCancerGSMallminusLymph,sCancerGSMallminusLymph,vCancerGSMallminusLymph]=svd(YCancerGSMallminusLymph);
+
+ [uCancerGSMallminusLymphaBladder,sCancerGSMallminusLymphaBladder,vCancerGSMallminusLymphaBladder]=svd(YCancerGSMallminusLymphaBladder);
+
+
+
+X=CancerGSMd;
+
+SS = sum(X);
+for k = 1: size(CancerGSMd,2); %265 is the total number of patients/samples we have%
+    P = X(:,k);
+    for i = 1: 14; %14 is th number of lambdas needed%
+    for j = 1: 14;%14 is th number of lambdas needed%
+        M(i,j) = sum((uCancerGSMd(:,i) .* uCancerGSMd(:, j)) .* P);
+    end;
+    end;
+    SLA(:,k) = sqrt(0.01 * SS(1,k)) * (inv(M) * sqrt(diag(M)));
+end;
+EA = SLA';
+ %EA is the error for each lambda of each patient%
+
+dlmwrite('EACancerGSMd.txt',EA,'delimiter','\t','precision',15);
+
+
+
+
+
+X=CancerGSMLymph;
+
+SS = sum(X);
+for k = 1: size(CancerGSMLymph,2); %265 is the total number of patients/samples we have%
+    P = X(:,k);
+    for i = 1: 14; %14 is th number of lambdas needed%
+    for j = 1: 14;%14 is th number of lambdas needed%
+        M(i,j) = sum((uCancerGSMLymph(:,i) .* uCancerGSMLymph(:, j)) .* P);
+    end;
+    end;
+    SLA(:,k) = sqrt(0.01 * SS(1,k)) * (inv(M) * sqrt(diag(M)));
+end;
+EA = SLA';
+ %EA is the error for each lambda of each patient%
+
+dlmwrite('EACancerGSMLymph.txt',EA,'delimiter','\t','precision',15);
+
+
+
+X=CancerGSMBladder;
+
+SS = sum(X);
+for k = 1: size(CancerGSMBladder,2); %265 is the total number of patients/samples we have%
+    P = X(:,k);
+    for i = 1: 14; %14 is th number of lambdas needed%
+    for j = 1: 14;%14 is th number of lambdas needed%
+        M(i,j) = sum((uCancerGSMBladder(:,i) .* uCancerGSMBladder(:, j)) .* P);
+    end;
+    end;
+    SLA(:,k) = sqrt(0.01 * SS(1,k)) * (inv(M) * sqrt(diag(M)));
+end;
+EA = SLA';
+ %EA is the error for each lambda of each patient%
+
+dlmwrite('EACancerGSMBladder.txt',EA,'delimiter','\t','precision',15);
+
+
+
+X=CancerGSMallminusLymph;
+
+SS = sum(X);
+for k = 1: size(CancerGSMallminusLymph,2); %265 is the total number of patients/samples we have%
+    P = X(:,k);
+    for i = 1: 14; %14 is th number of lambdas needed%
+    for j = 1: 14;%14 is th number of lambdas needed%
+        M(i,j) = sum((uCancerGSMallminusLymph(:,i) .* uCancerGSMallminusLymph(:, j)) .* P);
+    end;
+    end;
+    SLA(:,k) = sqrt(0.01 * SS(1,k)) * (inv(M) * sqrt(diag(M)));
+end;
+EA = SLA';
+ %EA is the error for each lambda of each patient%
+
+dlmwrite('EACancerGSMallminusLymph.txt',EA,'delimiter','\t','precision',15);
+
+
+
+
+X=CancerGSMallminusLymphaBladder;
+
+SS = sum(X);
+for k = 1: size(CancerGSMallminusLymphaBladder,2); %265 is the total number of patients/samples we have%
+    P = X(:,k);
+    for i = 1: 14; %14 is th number of lambdas needed%
+    for j = 1: 14; %14 is th number of lambdas needed%
+        M(i,j) = sum((uCancerGSMallminusLymphaBladder(:,i) .* uCancerGSMallminusLymphaBladder(:, j)) .* P);
+    end;
+    end;
+    SLA(:,k) = sqrt(0.01 * SS(1,k)) * (inv(M) * sqrt(diag(M)));
+end;
+EA = SLA';
+ %EA is the error for each lambda of each patient%
+
+dlmwrite('EACancerGSMallminusLymphaBladder.txt',EA,'delimiter','\t','precision',15);
+
+
+
+
+
+
+
+
+LCancerGSMd=(sCancerGSMd*vCancerGSMd')';
+
+LCancerGSMLymph=(sCancerGSMLymph*vCancerGSMLymph')';
+
+LCancerGSMBladder=(sCancerGSMBladder*vCancerGSMBladder')';
+
+LCancerGSMallminusLymph=(sCancerGSMallminusLymph*vCancerGSMallminusLymph')';
+
+LCancerGSMallminusLymphaBladder=(sCancerGSMallminusLymphaBladder*vCancerGSMallminusLymphaBladder')';
+
+
+
+	 dlmwrite('L0CancerGSMd.txt',abs(LCancerGSMd(:,1)),'delimiter','\t','precision',15);		
+
+ dlmwrite('L1CancerGSMd.txt',abs(LCancerGSMd(:,2)),'delimiter','\t','precision',15);
+
+ 
+ dlmwrite('L2CancerGSMd.txt',abs(LCancerGSMd(:,3)),'delimiter','\t','precision',15);
+
+ dlmwrite('L3CancerGSMd.txt',abs(LCancerGSMd(:,4)),'delimiter','\t','precision',15);
+
+  dlmwrite('L4CancerGSMd.txt',abs(LCancerGSMd(:,5)),'delimiter','\t','precision',15);
+ 
+ dlmwrite('L5CancerGSMd.txt',abs(LCancerGSMd(:,6)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L6CancerGSMd.txt',abs(LCancerGSMd(:,7)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L7CancerGSMd.txt',abs(LCancerGSMd(:,8)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L8CancerGSMd.txt',abs(LCancerGSMd(:,9)),'delimiter','\t','precision',15); 
+ 
+  
+  dlmwrite('L9CancerGSMd.txt',abs(LCancerGSMd(:,10)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L10CancerGSMd.txt',abs(LCancerGSMd(:,11)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L11CancerGSMd.txt',abs(LCancerGSMd(:,12)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L12CancerGSMd.txt',abs(LCancerGSMd(:,13)),'delimiter','\t','precision',15); 
+ 
+ 
+			
+	
+     
+     	 dlmwrite('L0CancerGSMLymph.txt',abs(LCancerGSMLymph(:,1)),'delimiter','\t','precision',15);
+
+ dlmwrite('L1CancerGSMLymph.txt',abs(LCancerGSMLymph(:,2)),'delimiter','\t','precision',15);
+
+
+ dlmwrite('L2CancerGSMLymph.txt',abs(LCancerGSMLymph(:,3)),'delimiter','\t','precision',15);
+
+ dlmwrite('L3CancerGSMLymph.txt',abs(LCancerGSMLymph(:,4)),'delimiter','\t','precision',15);
+
+  dlmwrite('L4CancerGSMLymph.txt',abs(LCancerGSMLymph(:,5)),'delimiter','\t','precision',15);
+ 
+  dlmwrite('L5CancerGSMLymph.txt',abs(LCancerGSMLymph(:,6)),'delimiter','\t','precision',15);
+   
+ 
+ dlmwrite('L6CancerGSMLymph.txt',abs(LCancerGSMLymph(:,7)),'delimiter','\t','precision',15); 
+  
+ 
+  
+  dlmwrite('L7CancerGSMLymph.txt',abs(LCancerGSMLymph(:,8)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L8CancerGSMLymph.txt',abs(LCancerGSMLymph(:,9)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L9CancerGSMLymph.txt',abs(LCancerGSMLymph(:,10)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L10CancerGSMLymph.txt',abs(LCancerGSMLymph(:,11)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L11CancerGSMLymph.txt',abs(LCancerGSMLymph(:,12)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L12CancerGSMLymph.txt',abs(LCancerGSMLymph(:,13)),'delimiter','\t','precision',15); 
+  
+  
+  
+  
+ 
+dlmwrite('L0CancerGSMBladder.txt',abs(LCancerGSMBladder(:,1)),'delimiter','\t','precision',15);
+  
+  
+ dlmwrite('L1CancerGSMBladder.txt',abs(LCancerGSMBladder(:,2)),'delimiter','\t','precision',15);
+
+ 
+ dlmwrite('L2CancerGSMBladder.txt',abs(LCancerGSMBladder(:,3)),'delimiter','\t','precision',15);
+
+ dlmwrite('L3CancerGSMBladder.txt',abs(LCancerGSMBladder(:,4)),'delimiter','\t','precision',15);
+
+  dlmwrite('L4CancerGSMBladder.txt',abs(LCancerGSMBladder(:,5)),'delimiter','\t','precision',15);
+ 
+  dlmwrite('L5CancerGSMBladder.txt',abs(LCancerGSMBladder(:,6)),'delimiter','\t','precision',15);
+   
+ 
+ dlmwrite('L6CancerGSMBladder.txt',abs(LCancerGSMBladder(:,7)),'delimiter','\t','precision',15); 
+ 
+ 
+ dlmwrite('L7CancerGSMBladder.txt',abs(LCancerGSMBladder(:,8)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L8CancerGSMBladder.txt',abs(LCancerGSMBladder(:,9)),'delimiter','\t','precision',15); 
+ 
+ 
+ dlmwrite('L9CancerGSMBladder.txt',abs(LCancerGSMBladder(:,10)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L10CancerGSMBladder.txt',abs(LCancerGSMBladder(:,11)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L11CancerGSMBladder.txt',abs(LCancerGSMBladder(:,12)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L12CancerGSMBladder.txt',abs(LCancerGSMBladder(:,13)),'delimiter','\t','precision',15); 
+  
+  
+   
+  
+  
+  
+ dlmwrite('L0CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,1)),'delimiter','\t','precision',15);
+
+ dlmwrite('L1CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,2)),'delimiter','\t','precision',15);
+
+	
+ dlmwrite('L2CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,3)),'delimiter','\t','precision',15);
+
+ dlmwrite('L3CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,4)),'delimiter','\t','precision',15);
+
+  dlmwrite('L4CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,5)),'delimiter','\t','precision',15);
+ 
+   dlmwrite('L5CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,6)),'delimiter','\t','precision',15);
+  
+   
+ 
+ dlmwrite('L6CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,7)),'delimiter','\t','precision',15); 
+ 
+ 
+ 
+ 
+ dlmwrite('L7CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,8)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L8CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,9)),'delimiter','\t','precision',15); 
+ 
+ 
+ dlmwrite('L9CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,10)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L10CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,11)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L11CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,12)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L12CancerGSMallminusLymph.txt',abs(LCancerGSMallminusLymph(:,13)),'delimiter','\t','precision',15); 
+  
+  
+  
+ 
+  dlmwrite('L0CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,1)),'delimiter','\t','precision',15);
+  
+ 
+ dlmwrite('L1CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,2)),'delimiter','\t','precision',15);
+
+
+
+ dlmwrite('L2CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,3)),'delimiter','\t','precision',15);
+
+ dlmwrite('L3CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,4)),'delimiter','\t','precision',15);
+
+  dlmwrite('L4CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,5)),'delimiter','\t','precision',15);
+ 
+ dlmwrite('L5CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,6)),'delimiter','\t','precision',15);
+  
+ 
+ dlmwrite('L6CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,7)),'delimiter','\t','precision',15); 
+ 
+ 
+ dlmwrite('L7CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,8)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L8CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,9)),'delimiter','\t','precision',15); 
+ 
+ dlmwrite('L9CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,10)),'delimiter','\t','precision',15);
+ 
+ 
+ dlmwrite('L10CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,11)),'delimiter','\t','precision',15); 
+ 
+ 
+  dlmwrite('L11CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,12)),'delimiter','\t','precision',15); 
+  
+  
+  dlmwrite('L12CancerGSMallminusLymphaBladder.txt',abs(LCancerGSMallminusLymphaBladder(:,13)),'delimiter','\t','precision',15); 
+  
+ 
+  
+  
+  
+   dlmwrite('L1CancerGSMdall',abs(LCancerGSMd(:,2:13)),'delimiter','\t','precision',15);
+  
+  dlmwrite('L1CancerGSMLymphall',abs(LCancerGSMLymph(:,2:13)),'delimiter','\t','precision',15);
+  
+  
+  dlmwrite('L1CancerGSMBladderall',abs(LCancerGSMBladder(:,2:13)),'delimiter','\t','precision',15);
+  
+  
+  dlmwrite('L1CancerGSMallallminusLymph',abs(LCancerGSMallminusLymph(:,2:13)),'delimiter','\t','precision',15);
+  
+  
+  dlmwrite('L1CancerGSMallallminusLymphaBladder',abs(LCancerGSMallminusLymphaBladder(:,2:13)),'delimiter','\t','precision',15);
+  
+  
+  
+ 
+				 disp(size(LCancerGSMd,1));
+
+
+
+fileID4440 = fopen('NormL12L1CancerGSMd.txt','w');
+
+fileID444012 = fopen('NormL12L1CancerGSMdn12.txt','w');
+
+fileID4440123 = fopen('NormL12L1CancerGSMdn123.txt','w');
+
+fileID444023 =  fopen('NormL12L1CancerGSMdn23.txt','w');
+
+
+				 for i=1:size(LCancerGSMd,1)
+
+ L12L1CancerGSMd=LCancerGSMd(i,2:13);
+    NormL12L1CancerGSMd=sqrt(sum(L12L1CancerGSMd.^2,2));
+  
+    fprintf(fileID4440,'%f  \n',NormL12L1CancerGSMd);
+  
+    
+     L12L1CancerGSMd12=LCancerGSMd(i,2:3);
+    NormL12L1CancerGSMd12=sqrt(sum(L12L1CancerGSMd12.^2,2));
+  
+    fprintf(fileID444012,'%f  \n',NormL12L1CancerGSMd12);
+    
+    
+     L12L1CancerGSMd123=LCancerGSMd(i,2:4);
+    NormL12L1CancerGSMd123=sqrt(sum(L12L1CancerGSMd123.^2,2));
+  
+    fprintf(fileID4440123,'%f  \n',NormL12L1CancerGSMd123);
+    
+    
+     L12L1CancerGSMd23=LCancerGSMd(i,3:4);
+    NormL12L1CancerGSMd23=sqrt(sum(L12L1CancerGSMd23.^2,2));
+  
+    fprintf(fileID444023,'%f  \n',NormL12L1CancerGSMd23);
+    
+end
+ 
+fclose(fileID4440);
+
+fclose(fileID444012);
+
+fclose(fileID4440123);
+
+
+fclose(fileID444023);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fileID5550 = fopen('NormL12L1CancerGSMLymph.txt','w');
+
+
+fileID555012 = fopen('NormL12L1CancerGSMLymphn12.txt','w');
+
+fileID5550123 = fopen('NormL12L1CancerGSMLymphn123.txt','w');
+
+
+fileID555023 =  fopen('NormL12L1CancerGSMLymphn23.txt','w');
+
+
+
+ for i=1:size(LCancerGSMLymph,1)
+
+				 L12L1CancerGSMLymph=LCancerGSMLymph(i,2:13);
+    NormL12L1CancerGSMLymph=sqrt(sum(L12L1CancerGSMLymph.^2,2));
+
+
+fprintf(fileID5550,'%f  \n',NormL12L1CancerGSMLymph);
+
+
+
+
+
+
+L12L1CancerGSMLymph12=LCancerGSMLymph(i,2:3);
+    NormL12L1CancerGSMLymph12=sqrt(sum(L12L1CancerGSMLymph12.^2,2));
+  
+    fprintf(fileID555012,'%f  \n',NormL12L1CancerGSMLymph12);
+    
+    
+     L12L1CancerGSMLymph123=LCancerGSMLymph(i,2:4);
+    NormL12L1CancerGSMLymph123=sqrt(sum(L12L1CancerGSMLymph123.^2,2));
+  
+    fprintf(fileID5550123,'%f  \n',NormL12L1CancerGSMLymph123);
+
+
+L12L1CancerGSMLymph23=LCancerGSMLymph(i,3:4);
+    NormL12L1CancerGSMLymph23=sqrt(sum(L12L1CancerGSMLymph23.^2,2));
+  
+    fprintf(fileID555023,'%f  \n',NormL12L1CancerGSMLymph23);
+
+
+
+
+end
+ 
+
+
+fclose(fileID5550);
+
+fclose(fileID555012);
+
+fclose(fileID5550123);
+
+fclose(fileID555023);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fileID6660 = fopen('NormL12L1CancerGSMBladder.txt','w');
+
+fileID666012 = fopen('NormL12L1CancerGSMBladdern12.txt','w');
+
+fileID6660123 = fopen('NormL12L1CancerGSMBladdern123.txt','w');
+
+
+fileID666023 =  fopen('NormL12L1CancerGSMBladdern23.txt','w');
+
+
+
+ for i=1:size(LCancerGSMBladder,1)
+
+ L12L1CancerGSMBladder=LCancerGSMBladder(i,2:13);
+    NormL12L1CancerGSMBladder=sqrt(sum(L12L1CancerGSMBladder.^2,2));
+
+
+fprintf(fileID6660,'%f  \n',NormL12L1CancerGSMBladder);
+
+
+
+L12L1CancerGSMBladder12=LCancerGSMBladder(i,2:3);
+    NormL12L1CancerGSMBladder12=sqrt(sum(L12L1CancerGSMBladder12.^2,2));
+  
+    fprintf(fileID666012,'%f  \n',NormL12L1CancerGSMBladder12);
+    
+    
+     L12L1CancerGSMBladder123=LCancerGSMBladder(i,2:4);
+    NormL12L1CancerGSMBladder123=sqrt(sum(L12L1CancerGSMBladder123.^2,2));
+  
+    fprintf(fileID6660123,'%f  \n',NormL12L1CancerGSMBladder123);
+
+
+   L12L1CancerGSMBladder23=LCancerGSMBladder(i,3:4);
+    NormL12L1CancerGSMBladder23=sqrt(sum(L12L1CancerGSMBladder23.^2,2));
+  
+    fprintf(fileID666023,'%f  \n',NormL12L1CancerGSMBladder23);
+
+
+
+
+
+
+end
+ 
+
+
+
+
+
+fclose(fileID6660);
+
+fclose(fileID666012);
+
+fclose(fileID6660123);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fileID7770 = fopen('NormL12L1CancerGSMallminusLymph.txt','w');
+
+fileID777012 = fopen('NormL12L1CancerGSMallminusLymphn12.txt','w');
+
+fileID7770123 = fopen('NormL12L1CancerGSMallminusLymphn123.txt','w');
+
+fileID777023 =  fopen('NormL12L1CancerGSMallminusLymphn23.txt','w');
+
+
+
+
+for i=1:size(LCancerGSMallminusLymph,1)
+
+ L12L1CancerGSMallminusLymph=LCancerGSMallminusLymph(i,2:13);
+    NormL12L1CancerGSMallminusLymph=sqrt(sum(L12L1CancerGSMallminusLymph.^2,2));
+
+
+fprintf(fileID7770,'%f  \n',NormL12L1CancerGSMallminusLymph);
+
+
+
+L12L1CancerGSMallminusLymph12=LCancerGSMallminusLymph(i,2:3);
+    NormL12L1CancerGSMallminusLymph12=sqrt(sum(L12L1CancerGSMallminusLymph12.^2,2));
+  
+    fprintf(fileID777012,'%f  \n',NormL12L1CancerGSMallminusLymph12);
+    
+    
+     L12L1CancerGSMallminusLymph123=LCancerGSMallminusLymph(i,2:4);
+    NormL12L1CancerGSMallminusLymph123=sqrt(sum(L12L1CancerGSMallminusLymph123.^2,2));
+  
+    fprintf(fileID7770123,'%f  \n',NormL12L1CancerGSMallminusLymph123);
+
+    
+    
+
+L12L1CancerGSMallminusLymph23=LCancerGSMallminusLymph(i,3:4);
+    NormL12L1CancerGSMallminusLymph23=sqrt(sum(L12L1CancerGSMallminusLymph23.^2,2));
+  
+    fprintf(fileID777023,'%f  \n',NormL12L1CancerGSMallminusLymph23);
+
+
+end
+ 
+
+
+
+
+
+
+
+fclose(fileID7770);
+
+fclose(fileID777012);
+
+fclose(fileID7770123);
+
+fclose(fileID777023);
+
+
+
+
+
+
+
+
+
+
+
+
+fileID8880 = fopen('NormL12L1CancerGSMallminusLymphaBladder.txt','w');
+
+
+fileID888012 = fopen('NormL12L1CancerGSMallminusLymphaBladdern12.txt','w');
+
+fileID8880123 = fopen('NormL12L1CancerGSMallminusLymphaBladdern123.txt','w');
+
+
+fileID888023 =  fopen('NormL12L1CancerGSMallminusLymphaBladdern23.txt','w');
+
+
+
+for i=1:size(LCancerGSMallminusLymphaBladder,1)
+
+ L12L1CancerGSMallminusLymphaBladder=LCancerGSMallminusLymphaBladder(i,2:13);
+    NormL12L1CancerGSMallminusLymphaBladder=sqrt(sum(L12L1CancerGSMallminusLymphaBladder.^2,2));
+
+
+
+fprintf(fileID8880,'%f  \n',NormL12L1CancerGSMallminusLymphaBladder);
+
+
+
+
+L12L1CancerGSMallminusLymphaBladder12=LCancerGSMallminusLymphaBladder(i,2:3);
+    NormL12L1CancerGSMallminusLymphaBladder12=sqrt(sum(L12L1CancerGSMallminusLymphaBladder12.^2,2));
+  
+    fprintf(fileID888012,'%f  \n',NormL12L1CancerGSMallminusLymphaBladder12);
+    
+    
+     L12L1CancerGSMallminusLymphaBladder123=LCancerGSMallminusLymphaBladder(i,2:4);
+    NormL12L1CancerGSMallminusLymphaBladder123=sqrt(sum(L12L1CancerGSMallminusLymphaBladder123.^2,2));
+  
+    fprintf(fileID8880123,'%f  \n',NormL12L1CancerGSMallminusLymphaBladder123);
+
+
+
+     L12L1CancerGSMallminusLymphaBladder23=LCancerGSMallminusLymphaBladder(i,3:4);
+    NormL12L1CancerGSMallminusLymphaBladder23=sqrt(sum(L12L1CancerGSMallminusLymphaBladder23.^2,2));
+  
+    fprintf(fileID888023,'%f  \n',NormL12L1CancerGSMallminusLymphaBladder23);
+
+end
+ 
+
+
+
+
+
+fclose(fileID8880);
+
+fclose(fileID888012);
+
+fclose(fileID8880123);
+
+fclose(fileID888023);
+
