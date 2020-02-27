@@ -1,6 +1,4 @@
-load 'Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
 
-load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
 % breakpoiComputntsblockf=Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
 % 
 %  
@@ -23,6 +21,87 @@ load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
 %  load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
 % % 
 %  breakpointsblock=Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2;
+
+
+
+
+
+
+% ToSortG0=G0breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG0(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG0(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG0breaks214',b,'delimiter','\t','precision',15);
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% ToSortG=G1breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG1breaks214',b,'delimiter','\t','precision',15);
+%  
+%  
+%  
+% 
+%  
+%  
+%  ToSortG2=G2breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG2(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+% b = ToSortG2(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG2breaks214',b,'delimiter','\t','precision',15);
+% 
+%  
+%  
+%  ToSortG3=G3breaks214
+% 
+% 
+% % sort only the first column, return indices of the sort
+% [~,sorted_inds] = sort( ToSortG3(:,2) );
+% 
+% % reorder the rows based on the sorted indices
+
+% b = ToSortG3(sorted_inds,:); 
+% 
+%  dlmwrite('sortedG3breaks214',b,'delimiter','\t','precision',15);
+% 
+%  
+%  
+
+
+
+
+
+
+
+load 'Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
+
+load 'Lnonemin10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2';
 
 
 
@@ -214,21 +293,20 @@ dlmwrite('L1G1L2G2L3G3breaks.txt',breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))
 
 allto1=-(breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' +breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' +breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))'  +breakpointsblockU(:,5)*(Lambdafinebreaks(:,5))'  +breakpointsblockU(:,6)*(Lambdafinebreaks(:,6))'  +breakpointsblockU(:,7)*(Lambdafinebreaks(:,7))'+breakpointsblockU(:,8)*(Lambdafinebreaks(:,8))'+breakpointsblockU(:,9)*(Lambdafinebreaks(:,9))' +breakpointsblockU(:,10)*(Lambdafinebreaks(:,10))' +breakpointsblockU(:,11)*(Lambdafinebreaks(:,11))' +breakpointsblockU(:,12)*(Lambdafinebreaks(:,12))' +breakpointsblockU(:,13)*(Lambdafinebreaks(:,13))' +breakpointsblockU(:,14)*(Lambdafinebreaks(:,14))' +breakpointsblockU(:,15)*(Lambdafinebreaks(:,15))' +breakpointsblockU(:,16)*(Lambdafinebreaks(:,16))' +breakpointsblockU(:,17)*(Lambdafinebreaks(:,17))' +breakpointsblockU(:,18)*(Lambdafinebreaks(:,18))')
 
-	 expallto1=exp(allto1);
+expallto1=exp(allto1);
+ xi=exp(breakpointsblock);
 
-	 xi=exp(breakpointsblock);
-
-     absbreak=breakpointsblock;
+ absbreak=breakpointsblock;
 
 
 dlmwrite('66allto1ratio01ext.txt',allto1 ,'delimiter','\t','precision',15);
 
-	 dlmwrite('exp66allto1ratio01ext.txt',expallto1 ,'delimiter','\t','precision',15);
+dlmwrite('exp66allto1ratio01ext.txt',expallto1 ,'delimiter','\t','precision',15);
 
 
  l0sumcomponents=sum(xi.*(absbreak-L0G0break ) - xi + (exp(L0G0break)));
 
-			    l01sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break  ) - xi + ( (exp(L0G0break))).*((exp(L1G1break))) );
+	 l01sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break  ) - xi + ( (exp(L0G0break))).*((exp(L1G1break))) );
 
 	 l012sumcomponents=sum(xi.*(absbreak-L0G0break -L1G1break- L2G2break ) - xi + ( (exp(L0G0break)).*(exp(L1G1break))).*((exp(L2G2break))) );
 
@@ -241,11 +319,11 @@ dlmwrite('66allto1ratio01ext.txt',allto1 ,'delimiter','\t','precision',15);
 
 components=(xi.*(absbreak-L0G0break) - xi + exp(L0G0break));
 
-	   dlmwrite('l0sumcomponents.txt',(l0sumcomponents)' ,'delimiter','\t','precision',15);
+ dlmwrite('l0sumcomponents.txt',(l0sumcomponents)' ,'delimiter','\t','precision',15);
 
 dlmwrite('l01sumcomponents.txt',(l01sumcomponents)' ,'delimiter','\t','precision',15);
 
-	   dlmwrite('l012sumcomponents.txt',(l012sumcomponents)' ,'delimiter','\t','precision',15);
+ dlmwrite('l012sumcomponents.txt',(l012sumcomponents)' ,'delimiter','\t','precision',15);
 
 dlmwrite('l0123sumcomponents.txt',(l0123sumcomponents)' ,'delimiter','\t','precision',15);
 
@@ -253,7 +331,7 @@ dlmwrite('l0123sumcomponents.txt',(l0123sumcomponents)' ,'delimiter','\t','preci
 
 dlmwrite('sumxiInxiT.txt',(sum(xi.*(absbreak-L0G0break)))' ,'delimiter','\t','precision',15);
 
-	 dlmwrite('sumxi.txt',(sum(xi))' ,'delimiter','\t','precision',15);
+dlmwrite('sumxi.txt',(sum(xi))' ,'delimiter','\t','precision',15);
 
 dlmwrite('components.txt',components' ,'delimiter','\t','precision',15);
 
@@ -287,90 +365,6 @@ dlmwrite('t10L1breaks.txt',Lambdat10hroneminutesblock(:,2),'delimiter','\t','pre
 
 dlmwrite('t10L2breaks.txt',Lambdat10hroneminutesblock(:,3),'delimiter','\t','precision',15);
 
-
-
-
-
-% ToSortG0=G0breaks214
-% 
-% 
-% % sort only the first column, return indices of the sort
-% [~,sorted_inds] = sort( ToSortG0(:,2) );
-% 
-% % reorder the rows based on the sorted indices
-% b = ToSortG0(sorted_inds,:); 
-% 
-%  dlmwrite('sortedG0breaks214',b,'delimiter','\t','precision',15);
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% 
-% ToSortG=G1breaks214
-% 
-% 
-% % sort only the first column, return indices of the sort
-% [~,sorted_inds] = sort( ToSortG(:,2) );
-% 
-% % reorder the rows based on the sorted indices
-% b = ToSortG(sorted_inds,:); 
-% 
-%  dlmwrite('sortedG1breaks214',b,'delimiter','\t','precision',15);
-%  
-%  
-%  
-% 
-%  
-%  
-%  ToSortG2=G2breaks214
-% 
-% 
-% % sort only the first column, return indices of the sort
-% [~,sorted_inds] = sort( ToSortG2(:,2) );
-% 
-% % reorder the rows based on the sorted indices
-% b = ToSortG2(sorted_inds,:); 
-% 
-%  dlmwrite('sortedG2breaks214',b,'delimiter','\t','precision',15);
-% 
-%  
-%  
-%  ToSortG3=G3breaks214
-% 
-% 
-% % sort only the first column, return indices of the sort
-% [~,sorted_inds] = sort( ToSortG3(:,2) );
-% 
-% % reorder the rows based on the sorted indices
-% b = ToSortG3(sorted_inds,:); 
-% 
-%  dlmwrite('sortedG3breaks214',b,'delimiter','\t','precision',15);
-% 
-%  
-%  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
  
  
@@ -378,8 +372,7 @@ dlmwrite('t10L2breaks.txt',Lambdat10hroneminutesblock(:,3),'delimiter','\t','pre
 
 Processblock=Processesallrangesplitfullbreakpointsheatmapcluster10hr;
  
- 
-		  [Processesallrangesplitfullbreakpointsheatmapcluster10hrU,Processesallrangesplitfullbreakpointsheatmapcluster10hrS,ProcessesallrangesplitfullbreakpointsheatmapV]=svd(Processesallrangesplitfullbreakpointsheatmapcluster10hr);
+[Processesallrangesplitfullbreakpointsheatmapcluster10hrU,Processesallrangesplitfullbreakpointsheatmapcluster10hrS,ProcessesallrangesplitfullbreakpointsheatmapV]=svd(Processesallrangesplitfullbreakpointsheatmapcluster10hr);
  
  
  
@@ -450,19 +443,10 @@ dlmwrite('expbreak1',exp( breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))' ),'del
 dlmwrite('expbreak123',exp(breakpointsblockU(:,2)*(Lambdafinebreaks(:,2))'+ breakpointsblockU(:,3)*(Lambdafinebreaks(:,3))' + breakpointsblockU(:,4)*(Lambdafinebreaks(:,4))' ),'delimiter','\t','precision',15);
 
 
-%dlmwrite('expbreak',exp(Lnfinebreaks10hNExExExExNNCNONOCGLagrangeT10Gridf101Gr2),'delimiter','\t','precision',15);
 
 
 
-%    map = [0, 1, 0
-%      0, 0.8, 0
-%      0, 0.6, 0
-%      0, 0.4, 0
-%      0, 0.5, 0
-%       0.75, 0,0
-%        0.85, 0,0
-%      0.9, 0, 0
-%      1, 0, 0];
+
 
 map = [ 0, 0.8, 0
 0, 0.6, 0
@@ -474,35 +458,23 @@ map = [ 0, 0.8, 0
 
 
  
- %+ LG3Pbreak(1:34,1:102)
- 
- %+LG2Pbreak(1:34,1:102)+ LG3Pbreak(1:34,1:102) 
- 
- % hmo = HeatMap(LG1Pbreak(1:34,1:102)  );
- 
  load 'LG123Pbreak';
 		
 filename2 = 'columntimescalelambdabreaks.txt';
  
-%  filename1 = 'G123ordered.txt';
+
 
 filename1 = 'LabeledProcessesbreaks214.txt';
 
 AAAA=importdata(filename2);
 
 
-%AAA={'-1.9333333333',' ','','-1.7333333333','','','-1.6833333333','','','-1.6','','','-1.3333333333','','','-1.2833333333','','','-1.2333333333','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','0.2666666667','','','-0.05','','','0','','','0.2333333333','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.4','','','4.9','','','5.4','','','5.9','','','6.4','','','6.9','','','7.4','','','7.9'};
-
-
-AAA={'-1.93',' ','','-1.73','','','-1.68','','','-1.6','','','-1.33','','','-1.28','','','-1.23','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','-0.27','','','-0.05','','','0','','','0.23','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.4','','','4.9','','','5.4','','','5.9','','','6.4','','','6.9','','','7.4','','','7.9'};
-
-
-%AAA={'-1.93',' ','','-1.73','','','-1.68','','','-1.6','','','-1.33','','','-1.28','','','-1.23','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','-0.27','','','-0.05','','','0','','','0.23','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.38','','','4.73','','','5.23','','','5.73','','','6.23','','','6.73','','','7.23','','','7.57'};
+AAA={'-1.9333333333',' ','','-1.7333333333','','','-1.6833333333','','','-1.6','','','-1.3333333333','','','-1.2833333333','','','-1.2333333333','','','-0.95','','','-0.9','','','-0.85','','','-0.65','','','-0.6','','','-0.55','','','0.2666666667','','','-0.05','','','0','','','0.2333333333','','','0.7','','','0.75','','','0.8','','','0.85','','','0.9','','','0.95','','','1.4','','','1.9','','','2.25','','','2.3','','','2.35','','','2.4','','','2.9','','','3.4','','','3.9','','','4.4','','','4.9','','','5.4','','','5.9','','','6.4','','','6.9','','','7.4','','','7.9'};
 
 
 AA=importdata(filename1);
 
-%colormap(flipud(colormap))
+colormap(flipud(colormap))
 
 
 
@@ -513,7 +485,7 @@ load 'ProcessesG0breaks214';
 
 load 'ProcessesG1breaks214';
 
-LG1ProcessPbreak=ProcessesG1breaks214*(-Lambdafinebreaks(:,2))';
+LG1ProcessPbreak=ProcessesG1breaks214*(Lambdafinebreaks(:,2))';
 
 load 'ProcessesG2breaks214';
 
@@ -521,9 +493,9 @@ LG2ProcessPbreak=ProcessesG2breaks214*(Lambdafinebreaks(:,3))';
 
 load 'ProcessesG3breaks214';
 
-LG3ProcessPbreak=ProcessesG3breaks214*(-Lambdafinebreaks(:,4))';
+LG3ProcessPbreak=ProcessesG3breaks214*(Lambdafinebreaks(:,4))';
 
-% +LG2ProcessPbreak(1:24,1:102) +   LG3ProcessPbreak(1:24,1:102)
+
 
 dlmwrite('LG1ProcessPbreak',LG1ProcessPbreak,'delimiter','\t','precision',15);
 
@@ -618,12 +590,12 @@ rawbreaks = exp(breakpointsblock);
 
 AvgG0=(rawbreaks)'*breakpointsblockU(:,1);
 
-			    LLL0=Lambdafinebreaks(:,1);
+LLL0=Lambdafinebreaks(:,1);
 
 
 AvgG1=(rawbreaks)'*(breakpointsblockU(:,2));
 
-			    LLL1=Lambdafinebreaks(:,2);
+LLL1=Lambdafinebreaks(:,2);
 
                 
 
@@ -634,9 +606,9 @@ rAvgG1=(rawbreaks)'*(-breakpointsblockU(:,2));
 
 AvgG2=(rawbreaks)'*(breakpointsblockU(:,3));
 
-			    LLL2=Lambdafinebreaks(:,3);
+LLL2=Lambdafinebreaks(:,3);
                 
-                LLL3=Lambdafinebreaks(:,4);
+LLL3=Lambdafinebreaks(:,4);
 
 dlmwrite('rawbreaks.txt',rawbreaks,'delimiter','\t','precision',15);
                 
@@ -655,7 +627,7 @@ breaksortLLL0=sort(LLL0);
 
 
 
-%sortLLL1=(linspace(5,20,118))
+sortLLL1=(linspace(5,20,118))
 
 breaksortLLL1=(sort(LLL1))';
 
@@ -663,54 +635,18 @@ breaksortLLL2=(sort(LLL2))';
 
 breaksortLLL3=(sort(LLL3))';
 
-% 
-% sortLLL1=([10 6 0 -8 -16])
-% 
-% %sortLLL2=([10 5 -4 -2 -5])
-% 
-% sortLLL2=([10 -5 -4 -2 5])
+
 
 
 dlmwrite('ppsortLLL2',[linspace(-5,10,107) linspace(10,-5,107)],'delimiter','\t','precision',15);
 
 
-%  psortLLL2=linspace(-5,10,214);
 
-%  psortLLL2=linspace(-9,9,50) ;
-% %  
-%   psortLLL1=linspace(2,22,50);
-
-% psortLLL2=linspace(-15,7,50) ;
-%  
-%  psortLLL1=linspace(-15,22,50);
-%  
-
-% psortLLL2=linspace(-15,10,50) ;
-%  
-%  psortLLL1=linspace(-15,22,50);
- 
- 
- 
-% psortLLL2=linspace(-3,1,50) ;
-%  
-%  psortLLL1=linspace(-9,-5,50);
  
  
 
-% psortLLL2=linspace(-10,10,50) ;
-%  
-%  psortLLL1=linspace(-15,12,50);
 
-
- % psortLLL2=linspace(-10,10,50) ;
-%  
-%  psortLLL1=linspace(-15,12,50);
-
-%  psortLLL2=linspace(-5,15,50) ;
-%  
-%  psortLLL1=linspace(-25,-5,50);
-
-% 
+ 
  psortLLL2=linspace(-15,10,50) ;
  
  psortLLL1=linspace(-15,22,50);
@@ -719,10 +655,7 @@ dlmwrite('psortLLL1',psortLLL1,'delimiter','\t','precision',15);
 
 dlmwrite('psortLLL2',psortLLL2,'delimiter','\t','precision',15);
 
-% 
-%  psortLLL2=linspace(-12,10,50) ;
-%  
-%  psortLLL1=linspace(-12,22,50);
+
 
 
  psortLLL0=linspace(35,60,50);
@@ -733,11 +666,7 @@ dlmwrite('psortLLL2',psortLLL2,'delimiter','\t','precision',15);
  
  sortLLL0=psortLLL0;
 
- %sortLLL2=[10 8 4 0 -5 -2 1 3 5]
- 
-%   sortLLL2=[10 8 6 4 2 0 -2 -4 -5]
-% %  
-%   sortLLL1=[16 15 14 13 12 11 10 9  8 7 6 5 4 3  2 1 0 -1 -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -16];
+
 
 ssortLLL1=([10 6 0 -8 -16])';
 
@@ -783,17 +712,14 @@ load 'columntimescalelambdabreaks'
 
 columntime=columntimescalelambdabreaks;
 
-  % trialsum=  L0G0break+breakpointsblockU(:,1)*(sortLLL1) + breakpointsblockU(:,2)*(sortLLL2)
+trialsum=  L0G0break+breakpointsblockU(:,1)*(sortLLL1) + breakpointsblockU(:,2)*(sortLLL2)
 
-%	 sumcomponentsenergy=sum(xi.*(absbreak-( trialsum )) - xi + exp(trialsum))
-
-
+sumcomponentsenergy=sum(xi.*(absbreak-( trialsum )) - xi + exp(trialsum))
 
 
-
-% tL1AvgG1=[L1AvgG1 columntime]
-% 
-% tL2AvgG2=[L2AvgG2 columntime]
+tL1AvgG1=[L1AvgG1 columntime]
+ 
+ tL2AvgG2=[L2AvgG2 columntime]
 
 % % sort only the first column, return indices of the sort
  [~,sorted_inds] = sort( L0AvgG0(:,2) );
@@ -813,24 +739,22 @@ columntime=columntimescalelambdabreaks;
 % 
 % % reorder the rows based on the sorted indices
  sortL2AvgG2 = L2AvgG2(sorted_inds,:); 
-% 
-%  
-%  
-%  dlmwrite('sortL0AvgG0',sortL0AvgG0,'delimiter','\t','precision',15);
-%  
-%  dlmwrite('sortL1AvgG1',sortL1AvgG1,'delimiter','\t','precision',15);
-% 
-% dlmwrite('sortL2AvgG2',sortL2AvgG2,'delimiter','\t','precision',15);
-% 
+ 
+  dlmwrite('sortL0AvgG0',sortL0AvgG0,'delimiter','\t','precision',15);
+  
+  dlmwrite('sortL1AvgG1',sortL1AvgG1,'delimiter','\t','precision',15);
+ 
+ dlmwrite('sortL2AvgG2',sortL2AvgG2,'delimiter','\t','precision',15);
+ 
 
-% FreeE01=AvgG2.*LLL2 + AvgG1.*LLL1
-% 
-% 
-% FreeE0=AvgG0.*LLL0
-% 
-%  FreeE1=AvgG1.*LLL1
-% % 
-%  FreeE2=AvgG2.*LLL2
+ FreeE01=AvgG2.*LLL2 + AvgG1.*LLL1
+ 
+ 
+ FreeE0=AvgG0.*LLL0
+ 
+  FreeE1=AvgG1.*LLL1
+ 
+  FreeE2=AvgG2.*LLL2
 
  
 
@@ -1023,14 +947,6 @@ end
 end
 
 
-
-% for i=1:size(expL1G1,2)
-% for j=1:size(expL1G1,2)
-%    SumL1L01(i,j)=sum((expL0G0(:,i)).*(expL1G1(:,j)));
-% end
-% end
-% 
-%  SumL1L0t1=sum((expL0G0(:,100)).*(expL1G1(:,100)));
 
 
 
@@ -1359,22 +1275,7 @@ dlmwrite('LL2break432', (breakpointsblockU(:,3).*xi(:,43))*sortLLL2,'delimiter',
 
  %fun3d= zeros(length(sortLLL1),length(sortLLL1),length(breaksortLLL1));
  
-%  for k=0:5:100
-% 
-% for k=1:4
-%      for i=1:size(expL1G1,2)
-% for j=1:size(expL1G1,2)
-%  
-%     fun3d(i,j,k) =sum(xi(:,k).*absbreak(:,k)) -   bsxfun(@plus,(sum( bsxfun(@times,sortLLL1(i), breakpointsblockU(:,1).*xi(:,k)) ) ).',sum( bsxfun(@times,sortLLL2(j), breakpointsblockU(:,2).*xi(:,k))) ) ...
-%      - sum(xi(:,k))+ Sum3d(i,j,k);
-% 
-%  dlmwrite('sortLLL15',sortLLL1(5),'delimiter','\t','precision',15);
-%  dlmwrite('fun3d',fun3d,'delimiter','\t','precision',15);
-% 
-% end
-%      end
-%      end
-%  end
+
  
  
 
@@ -1386,9 +1287,8 @@ dlmwrite('LL2break432', (breakpointsblockU(:,3).*xi(:,43))*sortLLL2,'delimiter',
   ZZt1=bsxfun(funt1,sortLLL1,sortLLL2);
   
   ZZt2=bsxfun(funt2,sortLLL1,sortLLL2);
-%   
-  
-  %ZZ=bsxfun(fun1,sortLLL0,sortLLL1);
+   
+
  
    ZZ1=bsxfun(fun2,sortLLL1,sortLLL2);
    
@@ -1460,7 +1360,7 @@ ZZ25=bsxfun(fun26,sortLLL1,sortLLL2);
  for i=1:size(expL1G1,2)
 for j=1:size(expL1G1,2)
    ZMinL1L23(i,j)=min([ZZ1(i,j) ZZ2(i,j) ZZ3(i,j) ZZ18(i,j) ZZ19(i,j) ZZ4(i,j) ZZ5(i,j) ZZ6(i,j) ZZ7(i,j) ZZ8(i,j) ZZ9(i,j) ZZ10(i,j) ZZ11(i,j) ZZ12(i,j) ZZ13(i,j) ZZ14(i,j) ZZ15(i,j) ZZ16(i,j) ZZ17(i,j) ZZ20(i,j) ZZ21(i,j)   ZZ22(i,j)  ZZ23(i,j)  ZZ24(i,j) ZZ25(i,j) ]);
-%ZMinL1L23(i,j)=min([ZZ1(i,j) ZZ2(i,j)]);
+
 end
  end
     
@@ -1506,54 +1406,25 @@ dlmwrite('ZZ1',ZZ1,'delimiter','\t','precision',15);
  fun = @(sortLLL1,sortLLL2) fun2;
  
 
- 
-%  SumL1L23zf = zeros(100,100,118);
-% 
-% 
-% for k=1:5
-% for i=1:size(expL1G1,2)
-% for j=1:size(expL1G1,2)
-%     
-%       expL0G0breakzf=exp(L0G0break(:,k))  ;
-%    SumL1L23zf(i,j,k)=sum((expL1G1(:,i)).*(expL0G0breakzf.*expL2G2(:,j)));
-%     end
-% end
-% end
-% zf=1
-%     for sortLLL1o=-15:15
-%        
-%          for sortLLL2o=-10:5
-%  f(sortLLL1o,sortLLL2o,zf)= sum(xi(:,zf).*absbreak(:,zf)) -  sum(xi(:,zf).*L0G0break(:,zf)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1o, breakpointsblockU(:,2).*xi(:,zf)) ) ).',sum( bsxfun(@times,sortLLL2o, breakpointsblockU(:,3).*xi(:,zf))) ) ...
-%      - sum(xi(:,zf))+SumL1L23zf
-%          end
-%     end
-
-% i1=linspace(1,size(expL1G1,2),size(expL1G1,2)) ;
-% i2=linspace(1,size(expL1G1,2),size(expL1G1,2)) ;
-% i3=linspace(1,4,size(expL1G1,2));
-% scatter3(i1,i2,i3,40,fun3d,'filled')
- 
- 
-%fun = @(sortLLL1,sortLLL2)  bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,1)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,1))) )
 
     
-    fun0=@(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) 
+ fun0=@(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)))).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) 
   
-    fun00= @(sortLLL1,sortLLL2)- sum(xi(:,43)) + sum(exp(L0G0break(:,43)))+ bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ))
+ fun00= @(sortLLL1,sortLLL2)- sum(xi(:,43)) + sum(exp(L0G0break(:,43)))+ bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ))
     
-    dlmwrite('sumxixi0',- sum(xi(:,43)) + sum(exp(L0G0break(:,43))),'delimiter','\t','precision',15); 
+dlmwrite('sumxixi0',- sum(xi(:,43)) + sum(exp(L0G0break(:,43))),'delimiter','\t','precision',15); 
     
-    dlmwrite('sumxixi01',- sum(xi(:,43)),'delimiter','\t','precision',15); 
-    dlmwrite('sumxixi02', exp(L0G0break(:,43)),'delimiter','\t','precision',15); 
+dlmwrite('sumxixi01',- sum(xi(:,43)),'delimiter','\t','precision',15); 
+
+
+dlmwrite('sumxixi02', exp(L0G0break(:,43)),'delimiter','\t','precision',15); 
+   
     
+dlmwrite('sumxixiT',bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) )),'delimiter','\t','precision',15); 
     
- 
+dlmwrite('sumxixiTS1',(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
     
-    dlmwrite('sumxixiT',bsxfun(@plus,(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )).',sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) )),'delimiter','\t','precision',15); 
-    
-    dlmwrite('sumxixiTS1',(sum( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
-    
-    dlmwrite('sumxixiT1',(( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
+dlmwrite('sumxixiT1',(( exp(bsxfun(@times,sortLLL1, breakpointsblockU(:,2) )) )),'delimiter','\t','precision',15); 
     
     dlmwrite('sumxixiTS2',(sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3) )) )),'delimiter','\t','precision',15); 
     
@@ -1582,43 +1453,10 @@ dlmwrite('sumx43',xi(:,43),'delimiter','\t','precision',15);
 %       - sum( exp(bsxfun(@times,sortLLL2, breakpointsblockU(:,3))) ) ) ) ...
 %     - sum(xi(:,43)) + sum(exp(L0G0break(:,43))))
  
-
-
-
- %fun = @(sortLLL1,sortLLL2)bsxfun(@plus,sortLLL1.',sortLLL2)
- 
- %+  sum(exp(L0G0break(:,21) +(bsxfun(@times,sortLLL1',breakpointsblockU(:,2)))  +  (bsxfun(@times,sortLLL2',breakpointsblockU(:,3)) ) )  )
- 
- 
  
     dlmwrite('ZZ',ZZ,'delimiter','\t','precision',15); 
      disp(size(ZZ))
    
-
-
-
-     
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-%      figure;
-% hold all;
-
-
 
 
  [r,the]=meshgrid([0:0.1:5],[0:pi/10:2*pi]);
@@ -1653,6 +1491,8 @@ P2 = [-5,0,2];
 
  x2=-10:.1:10;
 [X2,Y2] = meshgrid(x2);
+
+
 %b=0.0; a=-0.5; c=0.12; d=2;
 
 %b=-0.4; a=-(8.5); c=1; d=-(-6 - a*(-5));
@@ -1993,25 +1833,13 @@ dlmwrite('FreeE2.txt',FreeE2,'delimiter','\t','precision',15);
 dlmwrite('FreeEF.txt',FreeEF,'delimiter','\t','precision',15);
 
 dlmwrite('FreeE12.txt',bsxfun(@plus,FreeE1.',FreeE2),'delimiter','\t','precision',15);
-
-
-
-
-% + LG4ProcessPbreak(1:25,1:118)   + LG5ProcessPbreak(1:25,1:118)     + LG6ProcessPbreak(1:25,1:118)  + LG7ProcessPbreak(1:25,1:118)  
+  
 
 
 %hmo = HeatMap((  flipud(  LG1ProcessPbreak(1:25,1:118)  +LG2ProcessPbreak(1:25,1:118)  + LG3ProcessPbreak(1:25,1:118)     ) ),'RowLabels',flipud(AA(1:25)),'ColumnLabels',AAA(1:118),'Colormap',colormap(flipud(colormap(map))) );
 
 
-
-
 %hmo = HeatMap((  flipud(  LG1ProcessPbreak(1:25,1:118)  +LG2ProcessPbreak(1:25,1:118)  + LG3ProcessPbreak(1:25,1:118)       ) ),'RowLabels',flipud(AA(1:25)),'ColumnLabels',AAA(1:118),'Colormap',colormap(flipud(colormap(map))) );
-
-
-
-
-
-
 
 
 %hmo = HeatMap((  flipud( LG123Pbreak(1:102,1:102) ) ),'RowLabels',flipud(AA(1:102)),'ColumnLabels',AAA(1:102),'Colormap',colormap(flipud(colormap(map))) );
@@ -2023,28 +1851,12 @@ colorbar
 %hmo = HeatMap(( LG123Pbreak(1:102,1:102) ),'RowLabels',AA(1:102),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
 
 
-
-
-
-
 %hmo = HeatMap(exp( LG1Pbreak(1:34,1:102)),'RowLabels',AA(1:34),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
-
-
-
 
 %hmo = HeatMap(( LG1Pbreak(1:34,1:102)),'RowLabels',AA(1:34),'ColumnLabels',AAA(1:102),'Colormap',colormap(map));
  
 
-
-
 %hmo = HeatMap(exp( LG1Pbreak(1:34,1:102)),'ColumnLabels',AAA(1:102),'Colormap',colormap(map) );
  
-
-
-
-
-
-
-
 
 %hmo = HeatMap(exp(LG1Pbreak(1:34,1:102) ),'Colormap',colormap(map) );
