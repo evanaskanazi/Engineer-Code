@@ -1146,27 +1146,17 @@ end
 dlmwrite('SumL1L44',SumL1L44,'delimiter','\t','precision',15);
 
 dlmwrite('sumxi', (xi),'delimiter','\t','precision',15);
-% dlmwrite('sumxitrial', (((exp(L0G0break)).*expL1G1).*expL2G2),'delimiter','\t','precision',15);
-% dlmwrite('sumxitrial3', (((exp(L0G0break)).*expL1G1).*expL2G2).*expL3G3,'delimiter','\t','precision',15);
 dlmwrite('sum0', SumL1L21,'delimiter','\t','precision',15);
 dlmwrite('0exp', expL1G1(:,1).*expL2G2(:,1),'delimiter','\t','precision',15);
 dlmwrite('sum0exp', sum(expL1G1(:,1).*expL2G2(:,1)),'delimiter','\t','precision',15);
 dlmwrite('sum0expexpL1G1',expL1G1 ,'delimiter','\t','precision',15);
 dlmwrite('sum0expexpL1G10',- sum(xi(:,43))+SumL1L21 ,'delimiter','\t','precision',15);
-%dlmwrite('sumx012', exp(L0G0break(:,43))*SumL1L2,'delimiter','\t','precision',15);
 
-%     SumL1L2=[]
-
-
-   
-
-% 
-    fun1 = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) ...
-    - sum(xi(:,43))+SumL1L21 ;
 
  funFE = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) 
    
- 
+  fun1 = @(sortLLL1,sortLLL2) sum(xi(:,43).*absbreak(:,43)) -  sum(xi(:,43).*L0G0break(:,43)) - bsxfun(@plus,(sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,43)) ) ).',sum( bsxfun(@times,sortLLL2, breakpointsblockU(:,3).*xi(:,43))) ) ...
+    - sum(xi(:,43))+SumL1L21 ;
  
 %      fun1 = @(sortLLL0,sortLLL1) sum(xi(:,118).*absbreak(:,118)) -   bsxfun(@plus,(sum( bsxfun(@times,sortLLL0, breakpointsblockU(:,1).*xi(:,118)) ) ).',sum( bsxfun(@times,sortLLL1, breakpointsblockU(:,2).*xi(:,118))) ) ...
 %      - sum(xi(:,118))+SumL1L01 ;
