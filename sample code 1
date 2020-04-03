@@ -108,5 +108,6 @@ if __name__ == "__main__":
 	new_model = filter_model(epochs = 1000, batch_size = 10)
 	new_model.create_model()
 	new_model.train_model(inputs, targets)
+	calculated_results = new_model.test_model(inputs)
 	self.model.predict(inputs)
 	np.savetxt('results.txt', calculated_results)
