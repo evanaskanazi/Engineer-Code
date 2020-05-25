@@ -195,6 +195,24 @@ data=biodata
 #data=OUTPUTEVENTS.fillna(OUTPUTEVENTS.mean())
 #data=OUTPUTEVENTS
 
+#extract features of data to be clustered
+
+n_samples, n_features = data.shape
+n_digits = len(np.unique(digits.target))
+labels = digits.target
+#prepare data for training, separating data
+#into input vectors for training and output
+#data for fitting
+candidates = {'1':biodata[:,0],
+              '2':biodata[:,1] ,
+              '3':biodata[:,2],
+              '4':biodata[:,5] ,
+              '5':lab_enc.fit_transform(biodata[:,7])
+              }
+df = pd.DataFrame(candidates,columns= ['1', '2','3','4','5'])
+X = df[['1', '2','3','4']]
+y = df['5']
+
 #Section for linear algbra based data analytics
 #perform singular value decomposition of medical data for information theory
 
@@ -212,6 +230,7 @@ for i in range(rows):
         L[i][j]=np.array(s)[i]
 '''
 #Plot eigenvector svd data for characterization of patient data
+
 xs=[]
 ys=[]
 xs = [i for i in (range(0,colsv)) ]
@@ -237,43 +256,36 @@ plt.legend(['u' + str(i) for i in range(3)])  # <-- give a legend
 plt.grid(b=True, which='major')  # <-- plot grid lines
 plt.show()
 
-#extract features of data to be clustered
+#Section for Classifying and Predicting Patient Data Behavior
 
-n_samples, n_features = data.shape
-n_digits = len(np.unique(digits.target))
-labels = digits.target
-#prepare data for training, separating data
-#into input vectors for training and output
-#data for fitting
-candidates = {'1':biodata[:,0],
-              '2':biodata[:,1] ,
-              '3':biodata[:,2],
-              '4':biodata[:,5] ,
-              '5':lab_enc.fit_transform(biodata[:,7])
-              }
-df = pd.DataFrame(candidates,columns= ['1', '2','3','4','5'])
-X = df[['1', '2','3','4']]
-y = df['5']
 #classify and predict training data based on Random Forest
+
 clf = RandomForestClassifier(n_estimators=100)
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)
 clf.fit(X_train,y_train)
 y_pred = clf.predict(X_test)
 print(confusion_matrix(y_test, y_pred))
 print(classification_report(y_test, y_pred))
+
 #classify and predict training data based on SVC
+
 model = SVC(kernel='rbf', class_weight='balanced')
 model.fit(X_train, y_train)
 y_predsvc = model.predict(X_test)
 print(confusion_matrix(y_test, y_predsvc))
 print(classification_report(y_test, y_predsvc))
+
 #classify and predict training data based on KNN
+
 classifier = KNeighborsClassifier(n_neighbors=5)
 classifier.fit(X_train, y_train)
 y_predclas = classifier.predict(X_test)
 print(confusion_matrix(y_test, y_predclas))
 print(classification_report(y_test, y_predclas))
+
+#Section for Random FOrest Classification
 #make prediction on how inout patient data will be classified based on Random Forest Method
+
 names = ['1', '2', '3', '4', '5', '6', '7', '8', '9','10']
 dfh = pd.read_csv(r'C:/Users/User/PycharmProjects/untitled3/biodata.csv', names=names)
 X = dfh.drop('10', axis=1)
@@ -288,6 +300,8 @@ rfc_predict = rfc.predict(X_test)
 print(confusion_matrix(y_test, rfc_predict))
 print(classification_report(y_test, rfc_predict))
 '''
+
+#K Means Clustering Section
 #perform elbow cluster determination for K Means clustering
 # based on input patient data after it has been reduced to
 #two dimensional structure through principle component analysis
@@ -305,8 +319,10 @@ for k in K:
 plt.plot(K, distortions, 'bx-')
 plt.savefig('C:/Users/User/PycharmProjects/untitled3/elbowmicrobiologyevents.png')
 plt.show()
+
 #reduces inout patient data to two dimensions va PCA
 #and separates them into K Mean centroids
+
 X = PCA(n_components=2).fit_transform(data)
 kmd=KMeans(n_clusters=3, init='k-means++', n_init=10, max_iter=300, tol=0.0001, precompute_distances='auto',
            verbose=0, random_state=None, copy_x=True, n_jobs=None, algorithm='auto')
@@ -345,6 +361,8 @@ plt.ylabel('Distortion')
 plt.title('The Elbow Method showing the optimal k')
 plt.show()
 '''
+
+#KNN Nearest Neighbor CLusterign Section
 # Find the min and max values for each column
 def dataset_minmax(dataset):
     minmax = list()
