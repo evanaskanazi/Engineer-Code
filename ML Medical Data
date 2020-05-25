@@ -1,3 +1,10 @@
+#We look to take medical data based on diagnoses, input and output procedures,
+#microbiology tests and related events that characterized patients' progression
+#through hospital treatments.  Ideally, we look to implement numerous ML methods in 
+#order to sufficiently characterize patient data based on the time in which events occurred,
+#the type of diagnoses, the treatments adminsitered to patients etc.
+#The ML methods used are linear algebra related data recuction, primarily PCA and SVD,
+#K Means, KNN nearest Neighbor, Decision Trees and Vectoer Support Machines.
 import numpy as np
 from sklearn.datasets import load_digits
 import matplotlib.pyplot as plt
