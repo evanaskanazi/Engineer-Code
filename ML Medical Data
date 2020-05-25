@@ -5,6 +5,7 @@
 #the type of diagnoses, the treatments adminsitered to patients etc.
 #The ML methods used are linear algebra related data recuction, primarily PCA and SVD,
 #K Means, KNN nearest Neighbor, Decision Trees and Vectoer Support Machines.
+
 import numpy as np
 from sklearn.datasets import load_digits
 import matplotlib.pyplot as plt
@@ -37,8 +38,11 @@ from gensim.models import Word2Vec
 from gensim.test.utils import common_texts, get_tmpfile
 from csv import reader
 from math import sqrt
+
+#Section for text to numerical data trnaslation
 #setup word2vec routines for extracting numerical data from text
 #for classification of medical descriptions
+
 path = get_tmpfile("word2vec.model")
 import nltk
 nltk.download('punkt')
@@ -80,7 +84,11 @@ print("Cosine similarity between 'alice' " +
 print("Cosine similarity between 'alice' " +
       "and 'ml' - Skip Gram : ",
       model2.similarity('alice', 'ml'))
-#read in labelled medical data along with iris data set for reference data testing
+      
+#Section to read in and convert labelled medical data along with iris data set for reference data testing
+#csv data files, with text, numerical and datatime information are collected and converted to proper format
+#for ML clustering, classifications and predictions
+
 lab_enc = preprocessing.LabelEncoder()
 iris = datasets.load_iris()
 dff=pd.DataFrame(iris['data'])
@@ -90,8 +98,10 @@ inpdf = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/INPUTEVENTS_MV0.c
 CPTEVENTS = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/CPTEVENTS0.csv', skiprows=1)
 ICUSTAYSinout = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/ICUSTAYS0.csv', skiprows=1)
 OUTPUTEVENTSinout = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/OUTPUTEVENTS0.csv', skiprows=1)
+
 #convert inputevent, outputevent and microbiology data to array form
 # and eliminate outliers and nonreadable data from oututevents
+
 OUTPUTEVENTSm=OUTPUTEVENTSinout.fillna(OUTPUTEVENTSinout.mean())
 OUTPUTEVENTSarray=np.array(OUTPUTEVENTSm)
 micdfa=np.array(micdf)
@@ -168,6 +178,7 @@ X0 = df0[['gmat', 'gpa','work_experience','age']]
 y0 = df0['admitted']
 '''
 #convert text column of microbiology data into data for classification
+
 l = [0 if element == 'I' else element for element in micdfa[:,10]]
 m = [1 if element == 'R' else element for element in l]
 n = [2 if element == 'S' else element for element in m]
@@ -183,7 +194,10 @@ data=biodata
 #data=ICUSTAYS
 #data=OUTPUTEVENTS.fillna(OUTPUTEVENTS.mean())
 #data=OUTPUTEVENTS
+
+#Section for linear algbra based data analytics
 #perform singular value decomposition of medical data for information theory
+
 u, s, vh = np.linalg.svd(np.matrix(biodata, dtype='float'), full_matrices=True)
 rows,cols = u.T.shape
 maxes = 1.1*np.amax(abs(u), axis = 0)
@@ -222,7 +236,9 @@ plt.plot(abs(np.array(xs)),abs(np.array(ys2)))
 plt.legend(['u' + str(i) for i in range(3)])  # <-- give a legend
 plt.grid(b=True, which='major')  # <-- plot grid lines
 plt.show()
+
 #extract features of data to be clustered
+
 n_samples, n_features = data.shape
 n_digits = len(np.unique(digits.target))
 labels = digits.target
