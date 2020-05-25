@@ -1,0 +1,380 @@
+import numpy as np
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import scale
+import matplotlib.pyplot as plt
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_digits
+from scipy.spatial.distance import cdist
+from sklearn.preprocessing import scale
+from sklearn import datasets
+import matplotlib.cm as cm
+import csv
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn import preprocessing
+from sklearn.svm import SVC
+import seaborn as sns; sns.set()
+from sklearn.neighbors import KNeighborsClassifier
+import re
+import gzip
+import gensim
+import logging
+from gensim.models import Word2Vec
+from gensim.test.utils import common_texts, get_tmpfile
+from csv import reader
+from math import sqrt
+#setup word2vec routines for extracting numerical data from text
+#for classification of medical descriptions
+path = get_tmpfile("word2vec.model")
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import sent_tokenize, word_tokenize
+import warnings
+warnings.filterwarnings(action='ignore')
+import gensim
+from gensim.models import Word2Vec
+data = []
+#  Reads ‘alice.txt’ file
+sample = open("C:\\Users\\User\\PycharmProjects\\untitled3\\alice0.txt", "r")
+s = sample.read()
+# Replaces escape character with space
+f = s.replace("\n", " ")
+# iterate through each sentence in the file
+for i in sent_tokenize(f):
+    temp = []
+    # tokenize the sentence into words
+    for j in word_tokenize(i):
+        temp.append(j.lower())
+    data.append(temp)
+# Create first of 2 word2vec models
+model1 = gensim.models.Word2Vec(data, min_count=1,
+                                size=100, window=5)
+# Create second word2vec model for comparison and testing for efficiency
+model2 = gensim.models.Word2Vec(data, min_count=1, size=100,
+                                window=5, sg=2)
+# Print results
+print("Cosine similarity between 'alice' " +
+      "and 'wonderland' - CBOW : ",
+      model1.similarity('alice', 'wonderland'))
+print("Cosine similarity between 'alice' " +
+      "and 'zzzzzzzzzzzzzzzzz' - CBOW : ",
+      model1.similarity('alice', 'zzzzzzzzzzzzzzzzz'))
+# Print results
+print("Cosine similarity between 'alice' " +
+      "and 'wonderland' - Skip Gram : ",
+      model2.similarity('alice', 'wonderland'))
+print("Cosine similarity between 'alice' " +
+      "and 'ml' - Skip Gram : ",
+      model2.similarity('alice', 'ml'))
+#read in labelled medical data along with iris data set for reference data testing
+lab_enc = preprocessing.LabelEncoder()
+iris = datasets.load_iris()
+dff=pd.DataFrame(iris['data'])
+diagdf = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/DIAGNOSES_ICD0.csv', skiprows=0)
+micdf = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/MICROBIOLOGYEVENTSSS.csv', skiprows=0)
+inpdf = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/INPUTEVENTS_MV0.csv', skiprows=0)
+CPTEVENTS = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/CPTEVENTS0.csv', skiprows=1)
+ICUSTAYSinout = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/ICUSTAYS0.csv', skiprows=1)
+OUTPUTEVENTSinout = pd.read_csv (r'C:/Users/User/PycharmProjects/untitled3/OUTPUTEVENTS0.csv', skiprows=1)
+#convert inputevent, outputevent and microbiology data to array form
+# and eliminate outliers and nonreadable data from oututevents
+OUTPUTEVENTSm=OUTPUTEVENTSinout.fillna(OUTPUTEVENTSinout.mean())
+OUTPUTEVENTSarray=np.array(OUTPUTEVENTSm)
+micdfa=np.array(micdf)
+inpdfa=np.array(inpdf)
+#convert datatime events into numerical data for clustering and classification
+iou6 = pd.DataFrame({'date':OUTPUTEVENTSarray[:,6] })
+iou6['date'] = pd.to_datetime(iou6['date'])
+iou6 = iou6.set_index('date')
+iou6=iou6.index.values.astype(float)
+iou7 = pd.DataFrame({'date':OUTPUTEVENTSarray[:,7] })
+iou7['date'] = pd.to_datetime(iou7['date'])
+iou7 = iou7.set_index('date')
+iou7=iou7.index.values.astype(float)
+OUTPUTEVENTSv=np.vstack((np.transpose(OUTPUTEVENTSarray[:,0:5]), np.vstack((iou6,iou7))))
+OUTPUTEVENTS=np.transpose(OUTPUTEVENTSv)
+#OUTPUTEVENTS=OUTPUTEVENTSarray[:,0:5]
+ICUSTAYSArray=np.array(ICUSTAYSinout)
+icu7 = pd.DataFrame({'date':ICUSTAYSArray[:,7] })
+icu7['date'] = pd.to_datetime(icu7['date'])
+icu7 = icu7.set_index('date')
+icu7=icu7.index.values.astype(float)
+icu8 = pd.DataFrame({'date':ICUSTAYSArray[:,8] })
+icu8['date'] = pd.to_datetime(icu8['date'])
+icu8 = icu8.set_index('date')
+icu8=icu8.index.values.astype(float)
+ICUSTAYSv=np.vstack((np.transpose(ICUSTAYSArray[:,0:6]), np.vstack((icu7,icu8))))
+#ICUSTAYS=ICUSTAYSArray[:,0:6]
+ICUSTAYS=np.transpose(ICUSTAYSv)
+inp4 = pd.DataFrame({'date':inpdfa[:,4] })
+inp4['date'] = pd.to_datetime(inp4['date'])
+inp4 = inp4.set_index('date')
+inp4=inp4.index.values.astype(float)
+inp5 = pd.DataFrame({'date':inpdfa[:,5] })
+inp5['date'] = pd.to_datetime(inp5['date'])
+inp5 = inp5.set_index('date')
+inp5=inp5.index.values.astype(float)
+inp8=[model1.similarity('ml',inpdfa[i,8]) for i in range (len(inpdfa[:,8]))]
+inp9 = pd.DataFrame({'date':inpdfa[:,9] })
+inp9['date'] = pd.to_datetime(inp9['date'])
+inp9 = inp9.set_index('date')
+inp9=inp9.index.values.astype(float)
+biol=micdfa[:,0:3]
+dfa3 = pd.DataFrame({'date':micdfa[:,3] })
+dfa3['date'] = pd.to_datetime(dfa3['date'])
+dfa3 = dfa3.set_index('date')
+dfa3=dfa3.index.values.astype(float)
+dfa4 = pd.DataFrame({'date':micdfa[:,4] })
+dfa4['date'] = pd.to_datetime(dfa4['date'])
+dfa4 = dfa4.set_index('date')
+dfa4=dfa4.index.values.astype(float)
+#create matrix data for inout events
+inp13=[re.findall('\d+', inpdfa[i,13] ) for i in range (len(inpdfa[:,13]))]
+inp13i=[int(np.array(inp13[i])) for i in range (len(inpdfa[:,13]))]
+input1=inpdfa[:,0:3]
+input2=inpdfa[:,6:8]
+input3=inpdfa[:,[10,11,12,14,15,16,17]]
+inputn1=np.vstack((np.transpose(input1), np.vstack((inp4,inp5))))
+inputn2=np.vstack((inputn1, np.transpose(input2)))
+inputn3=np.vstack((inputn2, np.vstack((inp8,inp9))))
+inputn4=np.vstack((inputn3, np.transpose(input3)))
+inputevents=np.transpose(np.vstack((inputn4, inp13i)))
+biostn=np.vstack((np.transpose(biol[:,0:3]), np.vstack((dfa3,dfa4))))
+biostfn=np.vstack((biostn,np.transpose(micdfa[:,5:9]) ))
+'''
+candidates0 = {'gmat': [780,750,690,710,780,730,690,720,740,690,610,690,710,680,770,610,580,650,540,590,620,600,550,550,570,670,660,580,650,760,640,620,660,660,680,650,670,580,590,790],
+              'gpa': [4,3.9,3.3,3.7,3.9,3.7,2.3,3.3,3.3,1.7,2.7,3.7,3.7,3.3,3.3,3,2.7,3.7,2.7,2.3,3.3,2,2.3,2.7,3,3.3,3.7,2.3,3.7,3.3,3,2.7,4,3.3,3.3,2.3,2.7,3.3,1.7,3.7],
+              'work_experience': [3,4,3,5,4,6,1,4,5,1,3,5,6,4,3,1,4,6,2,3,2,1,4,1,2,6,4,2,6,5,1,2,4,6,5,1,2,1,4,5],
+              'age': [25,28,24,27,26,31,24,25,28,23,25,27,30,28,26,23,29,31,26,26,25,24,28,23,25,29,28,26,30,30,23,24,27,29,28,22,23,24,28,31],
+              'admitted': [2,2,1,2,2,2,0,2,2,0,0,2,2,1,2,0,0,1,0,0,1,0,0,0,0,1,1,0,1,2,0,0,1,1,1,0,0,0,0,2]
+              }
+df0 = pd.DataFrame(candidates0,columns= ['gmat', 'gpa','work_experience','age','admitted'])
+#print (df)
+X0 = df0[['gmat', 'gpa','work_experience','age']]
+y0 = df0['admitted']
+'''
+#convert text column of microbiology data into data for classification
+l = [0 if element == 'I' else element for element in micdfa[:,10]]
+m = [1 if element == 'R' else element for element in l]
+n = [2 if element == 'S' else element for element in m]
+biostf=np.vstack((biostfn,n ))
+biodata=np.transpose(biostf)
+#set up data for clustering
+digits = load_digits()
+#data = digits.data
+#data=diagdf
+data=biodata
+#data=inputevents
+#data=CPTEVENTS
+#data=ICUSTAYS
+#data=OUTPUTEVENTS.fillna(OUTPUTEVENTS.mean())
+#data=OUTPUTEVENTS
+#perform singular value decomposition of medical data for information theory
+u, s, vh = np.linalg.svd(np.matrix(biodata, dtype='float'), full_matrices=True)
+rows,cols = u.T.shape
+maxes = 1.1*np.amax(abs(u), axis = 0)
+rowsv,colsv = vh.T.shape
+ars=np.array(s)
+arvh=np.array(vh)
+L = np.matrix([[np.array(s)[i]*np.array(vh)[i,j] for j in range(rowsv)] for i in range(rowsv)])
+'''
+L=[]
+for i in range(rows):
+    for j in range(rows):
+        L[i][j]=np.array(s)[i]
+'''
+#Plot eigenvector svd data for characterization of patient data
+xs=[]
+ys=[]
+xs = [i for i in (range(0,colsv)) ]
+ys = [np.array(L)[0,i]  for i in (range(0,colsv)) ]
+ys1 = [np.array(L)[1,i]  for i in (range(0,colsv)) ]
+ys2 = [np.array(L)[2,i]  for i in (range(0,colsv)) ]
+#ys = [u[i,0]  for i in (range(0,cols)) ]
+#ys1 = [u[i,1]  for i in (range(0,cols)) ]
+#ys2 = [u[i,2]  for i in (range(0,cols)) ]
+plt.xlim(0,10)
+plt.ylim(1.0e+0,1.0e+21)
+plt.yscale('log')
+#plt.xlim(0,10000)
+#plt.ylim(-0.1,0.1)
+plt.plot(abs(np.array(xs)),abs(np.array(ys)))
+plt.plot(abs(np.array(xs)),abs(np.array(ys1)))
+plt.plot(abs(np.array(xs)),abs(np.array(ys2)))
+#plt.plot(0, 0, 'ok')  # <-- plot a black point at the origin
+#plt.axis('equal')  # <-- set the axes to the same scale
+# plt.xlim([-maxes[0], maxes[0]])  # <-- set the x axis limits
+#  plt.ylim([-maxes[1], maxes[1]])  # <-- set the y axis limits
+plt.legend(['u' + str(i) for i in range(3)])  # <-- give a legend
+plt.grid(b=True, which='major')  # <-- plot grid lines
+plt.show()
+#extract features of data to be clustered
+n_samples, n_features = data.shape
+n_digits = len(np.unique(digits.target))
+labels = digits.target
+#prepare data for training, separating data
+#into input vectors for training and output
+#data for fitting
+candidates = {'1':biodata[:,0],
+              '2':biodata[:,1] ,
+              '3':biodata[:,2],
+              '4':biodata[:,5] ,
+              '5':lab_enc.fit_transform(biodata[:,7])
+              }
+df = pd.DataFrame(candidates,columns= ['1', '2','3','4','5'])
+X = df[['1', '2','3','4']]
+y = df['5']
+#classify and predict training data based on Random Forest
+clf = RandomForestClassifier(n_estimators=100)
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.25,random_state=0)
+clf.fit(X_train,y_train)
+y_pred = clf.predict(X_test)
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+#classify and predict training data based on SVC
+model = SVC(kernel='rbf', class_weight='balanced')
+model.fit(X_train, y_train)
+y_predsvc = model.predict(X_test)
+print(confusion_matrix(y_test, y_predsvc))
+print(classification_report(y_test, y_predsvc))
+#classify and predict training data based on KNN
+classifier = KNeighborsClassifier(n_neighbors=5)
+classifier.fit(X_train, y_train)
+y_predclas = classifier.predict(X_test)
+print(confusion_matrix(y_test, y_predclas))
+print(classification_report(y_test, y_predclas))
+#make prediction on how inout patient data will be classified based on Random Forest Method
+names = ['1', '2', '3', '4', '5', '6', '7', '8', '9','10']
+dfh = pd.read_csv(r'C:/Users/User/PycharmProjects/untitled3/biodata.csv', names=names)
+X = dfh.drop('10', axis=1)
+y = dfh['10']
+xf=dfh.iloc[:, 0:2].values
+yf=dfh.iloc[:,2].values
+X_train, X_test, y_train, y_test = train_test_split(xf, yf, test_size=0.33, random_state=66)
+rfc = RandomForestClassifier()
+rfc.fit(X_train,y_train)
+rfc_predict = rfc.predict(X_test)
+'''
+print(confusion_matrix(y_test, rfc_predict))
+print(classification_report(y_test, rfc_predict))
+'''
+#perform elbow cluster determination for K Means clustering
+# based on input patient data after it has been reduced to
+#two dimensional structure through principle component analysis
+K = range(1,20)
+explainedvariance= []
+distortions = []
+for k in K:
+    reduced_data = PCA(n_components=2).fit_transform(data)
+    kmeans = KMeans(init = 'k-means++', n_clusters = k, n_init = k)
+    kmeans.fit(reduced_data)
+    distortions.append(kmeans.inertia_)
+    explainedvariance.append(sum(np.min(cdist(reduced_data,
+    kmeans.cluster_centers_, 'euclidean'), axis =
+    1))/data.shape[0])
+plt.plot(K, distortions, 'bx-')
+plt.savefig('C:/Users/User/PycharmProjects/untitled3/elbowmicrobiologyevents.png')
+plt.show()
+#reduces inout patient data to two dimensions va PCA
+#and separates them into K Mean centroids
+X = PCA(n_components=2).fit_transform(data)
+kmd=KMeans(n_clusters=3, init='k-means++', n_init=10, max_iter=300, tol=0.0001, precompute_distances='auto',
+           verbose=0, random_state=None, copy_x=True, n_jobs=None, algorithm='auto')
+y_km = kmd.fit_predict(X)
+plt.scatter(X[y_km == 0, 0], X[y_km == 0, 1],s=50, c='lightgreen',
+    marker='s', edgecolor='black',label='cluster 1')
+plt.scatter(X[y_km == 1, 0], X[y_km == 1, 1],s=50, c='blue',
+    marker='h', edgecolor='black',label='cluster 2')
+plt.scatter(X[y_km == 2, 0], X[y_km == 2, 1],s=50, c='purple',
+    marker='v', edgecolor='black',label='cluster 3')
+#plt.ylim(-1.0e+16,2.0e+16)
+plt.savefig('C:/Users/User/PycharmProjects/untitled3/kmeansmicrobiologyevents.png')
+plt.grid()
+plt.show()
+'''
+plt.scatter(X[y_km == 3, 0], X[y_km ==3, 1],s=50, c='red',
+marker='o', edgecolor='blue',label='cluster 4')
+'''
+# plot the centroids
+'''
+plt.scatter(kmd.cluster_centers_[:, 0], kmd.cluster_centers_[:, 1],s=250,
+marker='*',c='red', edgecolor='black',label='centroids')
+plt.legend(scatterpoints=1)
+'''
+'''
+distortions1 = []
+K1 = range(1,10)
+for k in K1:
+    kmeanModel = KMeans(n_clusters=k)
+    kmeanModel.fit(dff)
+    distortions1.append(kmeanModel.inertia_)
+plt.figure(figsize=(16,8))
+plt.plot(K1, distortions1, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Distortion')
+plt.title('The Elbow Method showing the optimal k')
+plt.show()
+'''
+# Find the min and max values for each column
+def dataset_minmax(dataset):
+    minmax = list()
+    for i in range(len(dataset[0])):
+        col_values = [row[i] for row in dataset]
+        value_min = min(col_values)
+        value_max = max(col_values)
+        minmax.append([value_min, value_max])
+    return minmax
+# Rescale dataset columns to the range 0-1
+def normalize_dataset(dataset, minmax):
+    for row in dataset:
+        for i in range(len(row)):
+            row[i] = (row[i] - minmax[i][0]) / (minmax[i][1] - minmax[i][0])
+# Calculate the Euclidean distance between two vectors
+def minkowski_distance(row1, row2):
+    distance = 0.0
+    for i in range(len(row1) - 1):
+        distance += (row1[i] - row2[i]) ** 3
+    return (distance ** (1. / 3))
+# Locate the most similar neighbors
+def get_neighbors(train, test_row, num_neighbors):
+    distances = list()
+    for train_row in train:
+        dist = minkowski_distance(test_row, train_row)
+        distances.append((train_row, dist))
+    distances.sort(key=lambda tup: tup[1])
+    neighbors = list()
+    for i in range(num_neighbors):
+        neighbors.append(distances[i][0])
+    return neighbors
+# Make a prediction with neighbors
+def predict_classification(train, test_row, num_neighbors):
+   neighbors = get_neighbors(train, test_row, num_neighbors)
+   output_values = [row[-1] for row in neighbors]
+   prediction = max(set(output_values), key=output_values.count)
+   return prediction
+# specify dimensions for input data for classification
+num_neighbors = 5
+# define a new input data vector
+row = [5.7,2.9,4.2,1.3,5.6,9.0,9.0,9.0,9.0,9.0,9.0]
+#row = [5.7,2.9,4.2]
+# predict the label
+label = predict_classification(np.array(np.matrix(data, dtype='float')), row, num_neighbors)
+#predict classification for first 20 input patient entries based on KNN classification
+for i in range(20):
+    labeld = predict_classification(np.array(np.matrix(data, dtype='float')), np.array(np.matrix(data, dtype='float'))[i,:], num_neighbors)
+    print('Data=%s, Predicted: %s' % (np.array(np.matrix(data, dtype='float'))[i,:], labeld))
+    #print('Data=%s, Predicted: %s' % (row, label))
+#predict classification for larger segment of input patient entries based on KNN classification
+Class=[predict_classification(np.array(np.matrix(data, dtype='float')), np.array(np.matrix(data, dtype='float'))[i,:], num_neighbors) for i in range(int(data.shape[0])) ]
+#plot predictions of classifications based on KNN neighbor method
+xClass = [i for i in (range(int(data.shape[0]))) ]
+plt.plot(abs(np.array(xClass)),abs(np.array(Class)))
+plt.savefig('C:/Users/User/PycharmProjects/untitled3/knnmicrobiologyevents.png')
+plt.show()
