@@ -185,7 +185,6 @@ n = [2 if element == 'S' else element for element in m]
 biostf=np.vstack((biostfn,n ))
 biodata=np.transpose(biostf)
 #set up data for clustering
-digits = load_digits()
 #data = digits.data
 #data=diagdf
 data=biodata
@@ -196,8 +195,9 @@ data=biodata
 #data=OUTPUTEVENTS
 
 #extract features of data to be clustered
-
 n_samples, n_features = data.shape
+#create digit data for comparisons and testing
+digits = load_digits()
 n_digits = len(np.unique(digits.target))
 labels = digits.target
 #prepare data for training, separating data
