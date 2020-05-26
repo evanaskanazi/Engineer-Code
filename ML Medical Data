@@ -152,7 +152,9 @@ dfa4 = pd.DataFrame({'date':micdfa[:,4] })
 dfa4['date'] = pd.to_datetime(dfa4['date'])
 dfa4 = dfa4.set_index('date')
 dfa4=dfa4.index.values.astype(float)
+
 #create matrix data for inout events
+
 inp13=[re.findall('\d+', inpdfa[i,13] ) for i in range (len(inpdfa[:,13]))]
 inp13i=[int(np.array(inp13[i])) for i in range (len(inpdfa[:,13]))]
 input1=inpdfa[:,0:3]
@@ -184,6 +186,7 @@ m = [1 if element == 'R' else element for element in l]
 n = [2 if element == 'S' else element for element in m]
 biostf=np.vstack((biostfn,n ))
 biodata=np.transpose(biostf)
+
 #set up data for clustering
 #data = digits.data
 #data=diagdf
